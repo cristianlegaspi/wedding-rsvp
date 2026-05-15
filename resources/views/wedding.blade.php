@@ -508,8 +508,8 @@
 
             <div class="date-badge reveal reveal-delay-3">
                 <div class="hero-date">
-                    <p>Wednesday, the Seventh of October</p>
-                    <p>Two Thousand Twenty-Six</p>
+                    <p>Wednesday, October 7, 2026</p>
+                    <p>Fruella's Tagaytay, Philippines</p>
                 </div>
             </div>
 
