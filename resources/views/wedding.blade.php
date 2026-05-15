@@ -791,6 +791,13 @@
                                placeholder="Your name as in invitation"
                                value="{{ old('name') }}" required>
                     </div>
+                    
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" class="input"
+                               placeholder="Your email address"
+                               value="{{ old('email') }}" required>
+                    </div>
 
                     <div class="form-group">
                         <label>Attendance</label>
@@ -814,6 +821,12 @@
                             <label>Dietary Restrictions</label>
                             <textarea name="dietary_needs" class="input" placeholder="Any allergies or special requirements?">{{ old('dietary_needs') }}</textarea>
                         </div>
+                    </div>
+
+
+                     <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" class="input" placeholder="Your message">{{ old('message') }}</textarea>
                     </div>
 
                     <button type="submit" class="btn" style="width:100%;margin-top:1rem;"><span>Submit RSVP</span></button>
