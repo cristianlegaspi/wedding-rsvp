@@ -746,6 +746,9 @@
         </div>
     </section>
 
+    {{-- ═══════════════════════════════════════════════════ --}}
+    {{-- RSVP SECTION — only this form block was changed    --}}
+    {{-- ═══════════════════════════════════════════════════ --}}
     <section class="section rsvp-wrap" id="rsvp">
         <div class="container">
             <div class="center reveal">
@@ -754,17 +757,68 @@
                 <div class="divider"><span class="div-ornament">✦</span></div>
             </div>
             <div class="rsvp-box reveal reveal-delay-1">
-                <form id="rsvpForm">
-                    <div class="form-group"><label>Full Name</label><input type="text" class="input" placeholder="Your name as in invitation" required></div>
-                    <div class="form-group"><label>Attendance</label>
-                        <div class="attendance"><button type="button" class="choice active" data-value="yes">Accepts with Pleasure</button><button type="button" class="choice" data-value="no">Declines with Regret</button></div>
+
+                {{-- Success message --}}
+                @if(session('rsvp_submitted'))
+                    <div style="text-align:center; padding:2rem; margin-bottom:2rem; border:1px solid var(--gold-pale); background:rgba(168,114,42,.05);">
+                        @if(session('attending') === 'yes')
+                            <p style="font-family:'Great Vibes',cursive; font-size:2rem; color:var(--gold);">We'll see you there!</p>
+                            <p style="font-family:'Jost',sans-serif; font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; color:var(--muted); margin-top:.8rem;">Your RSVP has been received. Thank you!</p>
+                        @else
+                            <p style="font-family:'Great Vibes',cursive; font-size:2rem; color:var(--gold);">We'll miss you!</p>
+                            <p style="font-family:'Jost',sans-serif; font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; color:var(--muted); margin-top:.8rem;">Thank you for letting us know.</p>
+                        @endif
                     </div>
-                    <div class="conditional show" id="guestDetails">
-                        <div class="form-group"><label>Number of Guests</label><select class="input"><option>1 Guest</option><option>2 Guests</option></select></div>
-                        <div class="form-group"><label>Dietary Restrictions</label><textarea class="input" placeholder="Any allergies or special requirements?"></textarea></div>
+                @endif
+
+                {{-- Validation errors --}}
+                @if($errors->any())
+                    <div style="margin-bottom:1.5rem; padding:1rem; border:1px solid #c0392b; color:#c0392b; font-family:'Jost',sans-serif; font-size:.75rem; letter-spacing:.1em;">
+                        <ul style="list-style:none; padding:0;">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
+                @endif
+
+                <form id="rsvpForm" action="{{ route('wedding.rsvp.store') }}" method="POST">
+                    @csrf
+
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" class="input"
+                               placeholder="Your name as in invitation"
+                               value="{{ old('name') }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Attendance</label>
+                        {{-- Hidden input carries the real value for the controller --}}
+                        <input type="hidden" name="attending" id="attendingInput" value="{{ old('attending', 'yes') }}">
+                        <div class="attendance">
+                            <button type="button" class="choice {{ old('attending', 'yes') !== 'no' ? 'active' : '' }}" data-value="yes">Accepts with Pleasure</button>
+                            <button type="button" class="choice {{ old('attending') === 'no' ? 'active' : '' }}" data-value="no">Declines with Regret</button>
+                        </div>
+                    </div>
+
+                    <div class="conditional {{ old('attending', 'yes') !== 'no' ? 'show' : '' }}" id="guestDetails">
+                        <div class="form-group">
+                            <label>Number of Guests</label>
+                            <select name="guests" class="input">
+                                <option value="1" {{ old('guests') == 1 ? 'selected' : '' }}>1 Guest</option>
+                                <option value="2" {{ old('guests') == 2 ? 'selected' : '' }}>2 Guests</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Dietary Restrictions</label>
+                            <textarea name="dietary_needs" class="input" placeholder="Any allergies or special requirements?">{{ old('dietary_needs') }}</textarea>
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn" style="width:100%;margin-top:1rem;"><span>Submit RSVP</span></button>
                 </form>
+
             </div>
         </div>
     </section>
@@ -806,12 +860,14 @@
             document.getElementById('secs').innerText = s < 10 ? '0'+s : s;
         }, 1000);
 
-        // RSVP Logic
+        // RSVP Logic — syncs hidden input + toggles guest details
         document.querySelectorAll('.choice').forEach(btn => {
             btn.addEventListener('click', function() {
                 document.querySelectorAll('.choice').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-                document.getElementById('guestDetails').classList.toggle('show', this.dataset.value === 'yes');
+                const val = this.dataset.value;
+                document.getElementById('attendingInput').value = val;
+                document.getElementById('guestDetails').classList.toggle('show', val === 'yes');
             });
         });
 
