@@ -315,7 +315,7 @@
         }
         .venue-img-wrap:hover::after { border-color:rgba(212,170,120,.3); }
 
-        /* ── DRESS CODE & GIFT DETAILS (NEW ADDITIONS) ── */
+        /* ── DRESS CODE & GIFTS (NEW) ── */
         .dress-code-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -358,7 +358,7 @@
 
         /* ── COUNTDOWN ── */
         .countdown-band {
-            padding: 6rem 0; text-align:center;
+            padding:6rem 0; text-align:center;
             background:linear-gradient(135deg,#f9f5ef 0%,#f2e8d9 100%);
             position:relative; overflow:hidden;
         }
@@ -483,6 +483,7 @@
     <audio id="weddingMusic" src="{{ asset('wedding-assets/music/tahanan.mp3') }}" loop></audio>
 
     <section class="hero">
+
         <div class="hero-arc hero-arc-1"></div>
         <div class="hero-arc hero-arc-2"></div>
         <div class="hero-arc hero-arc-3"></div>
@@ -517,22 +518,27 @@
         <div class="petals-canvas" id="petalsCanvas" aria-hidden="true"></div>
 
         <div class="hero-content">
+
             <div class="monogram-ring reveal">
                 <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
                     <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" font-family="Great Vibes, cursive" font-size="18" fill="#a8722a">J&amp;S</text>
                 </svg>
             </div>
+
             <p class="save-date reveal">Save The Date</p>
             <h1 class="names reveal reveal-delay-1">Joel</h1>
             <div class="ampersand-wrap reveal reveal-delay-2"><span class="ampersand">&amp;</span></div>
             <h1 class="names reveal reveal-delay-2">Stephanie</h1>
+
             <p class="hero-tagline reveal reveal-delay-3">Together With Their Families<br>Request The Pleasure of Your Company</p>
+
             <div class="date-badge reveal reveal-delay-3">
                 <div class="hero-date">
                     <p>Wednesday, October 7, 2026</p>
                     <p>Fruella's Tagaytay, Philippines</p>
                 </div>
             </div>
+
             <a href="#rsvp" class="btn reveal reveal-delay-4"><span>RSVP Now</span></a>
         </div>
     </section>
@@ -541,6 +547,7 @@
         <div class="section-frame"></div>
         <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}" class="floral floral-tl" style="width:140px;opacity:.28;" aria-hidden="true">
         <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-br" style="width:140px;opacity:.28;" aria-hidden="true">
+
         <div class="container">
             <div class="center reveal">
                 <p class="eyebrow">The Celebration</p>
@@ -570,10 +577,12 @@
     <section class="quote-band">
         <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}" class="floral floral-tl" style="width:150px;opacity:.35;" aria-hidden="true">
         <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-br" style="width:150px;opacity:.35;" aria-hidden="true">
+
         <svg style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(480px,80vw);opacity:.15;" viewBox="0 0 400 300" fill="none">
             <polygon points="200,18 370,108 340,268 78,278 28,128" stroke="#b8925a" stroke-width="1.5" fill="rgba(232,205,160,.22)"/>
             <polygon points="200,32 354,113 326,256 92,266 43,130" stroke="#c9a86e" stroke-width=".8" fill="none"/>
         </svg>
+
         <div class="container-sm" style="position:relative;z-index:2;">
             <p class="quote-text reveal">"Two souls, one heartbeat —<br>a love story written in the stars"</p>
             <p class="quote-attr reveal reveal-delay-1">Joel &amp; Stephanie · October 2026</p>
@@ -583,6 +592,7 @@
     <section class="section bg-paper">
         <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}" class="floral floral-tr" style="width:155px;opacity:.25;" aria-hidden="true">
         <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-bl" style="width:155px;opacity:.25;" aria-hidden="true">
+
         <div class="container">
             <div class="center reveal">
                 <p class="eyebrow">A Glimpse of</p>
@@ -622,6 +632,7 @@
         <div class="section-frame"></div>
         <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}" class="floral floral-tl" style="width:148px;opacity:.28;" aria-hidden="true">
         <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-br" style="width:148px;opacity:.28;" aria-hidden="true">
+
         <div class="container">
             <div class="venue reveal">
                 <p class="eyebrow">The Ceremony</p>
@@ -639,6 +650,27 @@
     </section>
 
     <section class="section bg-paper">
+        <div class="section-frame"></div>
+        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}" class="floral floral-tr" style="width:155px;opacity:.25;" aria-hidden="true">
+        <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-bl" style="width:155px;opacity:.25;" aria-hidden="true">
+
+        <div class="container">
+            <div class="venue reveal">
+                <p class="eyebrow">The Party</p>
+                <h2 class="venue-title">Fruella's Tagaytay</h2>
+                <p class="venue-description">Join us for a night of dining, dancing, and celebration at our beautiful garden reception following the ceremony.</p>
+                <div><span class="venue-time">5:00 PM · October 7, 2026</span></div>
+                <div class="venue-images">
+                    <div class="venue-img-wrap">
+                        <img src="{{ asset('wedding-assets/images/reception1.jpg') }}" alt="Venue exterior">
+                        <div class="venue-overlay"><span>Fruella's Tagaytay</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-warm">
         <div class="container">
             <div class="center reveal">
                 <p class="eyebrow">Attire Guide</p>
@@ -650,8 +682,8 @@
             <div class="dress-code-grid">
                 <div class="dress-card reveal">
                     <h3>Guests</h3>
-                    <p class="dress-desc"><strong>Women:</strong> Filipiniana  Attire (Long Gown, Cocktail Dress, or Pants with Bolero)</p>
-                    <p class="dress-desc" style="margin-top:1.5rem;"><strong>Men:</strong> Short Sleeve Barong Tagalog with Black pants and Khaki Brown</p>
+                    <p class="dress-desc"><strong>Women:</strong> Filipina Attire (Long Gown, Cocktail Dress, or Pants with Bolero)</p>
+                    <p class="dress-desc" style="margin-top:1.5rem;"><strong>Men:</strong> Short Sleeve Barong Tagalog with Black or Khaki Brown Pants</p>
                     
                     <p class="eyebrow" style="margin-top:2.5rem; font-size:0.6rem;">Suggested Palette</p>
                     <div class="color-palette">
@@ -661,9 +693,8 @@
                         <div class="color-swatch" style="background:#B7A994;"><span>Khaki</span></div>
                         <div class="color-swatch" style="background:#8B6F4E;"><span>Brown</span></div>
                         <div class="color-swatch" style="background:#93C572;"><span>Pistachio</span></div>
-                        <div class="color-swatch" style="background:#9CAF88;"><span>Sage Green</span></div>
-
-
+                          <div class="color-swatch" style="background:#B2AC88;"><span>Sage Green</span></div>
+                        
                     </div>
                 </div>
 
@@ -675,6 +706,16 @@
                         <div class="color-swatch" style="background:#D9C5B2;"><span>Beige</span></div>
                     </div>
                     <p class="dress-desc"><strong>Ninong:</strong> Long Sleeve Barong Tagalog with Brown, Khaki, or Black Pants</p>
+                
+                
+                  <div class="color-palette" style="margin-bottom:2rem;">
+                        <div class="color-swatch" style="background:#8B6F4E;"><span>Brown</span></div>
+                        <div class="color-swatch" style="background:#000000;"><span>Black</span></div>
+                        <div class="color-swatch" style="background:#B7A994;"><span>Khaki</span></div>
+
+                    </div>
+                
+                
                 </div>
             </div>
 
@@ -716,7 +757,7 @@
                 <form id="rsvpForm">
                     <div class="form-group"><label>Full Name</label><input type="text" class="input" placeholder="Your name as in invitation" required></div>
                     <div class="form-group"><label>Attendance</label>
-                        <div class="attendance"><button type="button" class="choice active" data-value="yes">Accepts with Pleasure</button><button type="button" class="choice" data-value="no">Declined without Regret</button></div>
+                        <div class="attendance"><button type="button" class="choice active" data-value="yes">Accepts with Pleasure</button><button type="button" class="choice" data-value="no">Declines with Regret</button></div>
                     </div>
                     <div class="conditional show" id="guestDetails">
                         <div class="form-group"><label>Number of Guests</label><select class="input"><option>1 Guest</option><option>2 Guests</option></select></div>
