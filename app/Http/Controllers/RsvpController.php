@@ -37,4 +37,11 @@ class RsvpController extends Controller
             'attending' => $validated['attending'],
         ]);
     }
+
+    public function responses(): View
+    {
+        $rsvps = Rsvp::latest()->get();
+
+        return view('admin.rsvps', compact('rsvps'));
+    }
 }
