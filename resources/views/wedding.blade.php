@@ -650,7 +650,7 @@
             <div class="dress-code-grid">
                 <div class="dress-card reveal">
                     <h3>Guests</h3>
-                    <p class="dress-desc"><strong>Women:</strong> Filipina Attire (Long Gown, Cocktail Dress, or Pants with Bolero)</p>
+                    <p class="dress-desc"><strong>Women:</strong> Filipiniana  Attire (Long Gown, Cocktail Dress, or Pants with Bolero)</p>
                     <p class="dress-desc" style="margin-top:1.5rem;"><strong>Men:</strong> Short Sleeve Barong Tagalog with Black pants and Khaki Brown</p>
                     
                     <p class="eyebrow" style="margin-top:2.5rem; font-size:0.6rem;">Suggested Palette</p>
