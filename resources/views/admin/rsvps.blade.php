@@ -92,6 +92,7 @@
             <th>Dietary Needs</th>
             <th>Message</th>
             <th>Submitted</th>
+            <th>Actions</th>
         </tr>
     </thead>
 
@@ -117,13 +118,31 @@
                 <td>{{ $rsvp->message ?? 'N/A' }}</td>
 
                 <td>{{ $rsvp->created_at->format('M d, Y h:i A') }}</td>
+
+                <td>
+
+                        <form action="{{ route('rsvps.destroy', $rsvp->id) }}"
+                            method="POST"
+                            style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit"
+                                    onclick="return confirm('Delete this RSVP?')">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
             </tr>
         @empty
             <tr>
-                <td colspan="8">No RSVP responses yet.</td>
+                <td colspan="9">No RSVP responses yet.</td>
             </tr>
         @endforelse
     </tbody>
+
+
+    
 </table>
 
 </body>

@@ -44,4 +44,47 @@ class RsvpController extends Controller
 
         return view('admin.rsvps', compact('rsvps'));
     }
+
+    public function edit($id): View
+    {
+        $rsvp = Rsvp::findOrFail($id);
+
+        return view('admin.edit-rsvp', compact('rsvp'));
+    }
+
+    public function update(Request $request, $id): RedirectResponse
+    {
+        $rsvp = Rsvp::findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['nullable', 'email', 'max:255'],
+            'attending' => ['required', 'in:yes,no'],
+            'guests' => ['nullable', 'integer', 'min:1', 'max:4'],
+            'dietary_needs' => ['nullable', 'string', 'max:500'],
+            'message' => ['nullable', 'string', 'max:1000'],
+        ]);
+
+        if (($validated['attending'] ?? null) === 'no') {
+            $validated['guests'] = null;
+            $validated['dietary_needs'] = null;
+        }
+
+        $rsvp->update($validated);
+
+        return redirect()
+            ->route('admin.rsvps')
+            ->with('success', 'RSVP updated successfully.');
+    }
+
+    public function destroy($id): RedirectResponse
+    {
+        $rsvp = Rsvp::findOrFail($id);
+
+        $rsvp->delete();
+
+        return redirect()
+            ->route('admin.rsvps')
+            ->with('success', 'RSVP deleted successfully.');
+    }
 }
