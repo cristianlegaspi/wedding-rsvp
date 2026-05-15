@@ -619,7 +619,7 @@
                 <div><span class="venue-time">2:00 PM · October 7, 2026</span></div>
                 <div class="venue-images">
                     <div class="venue-img-wrap">
-                        <img src="{{ asset('wedding-assets/images/church.jpg') }}" alt="Church exterior">
+                        <img src="{{ asset('wedding-assets/images/church.png') }}" alt="Church exterior">
                         <div class="venue-overlay"><span>St. John Vianney Church</span></div>
                     </div>
                     {{-- <div class="venue-img-wrap">
