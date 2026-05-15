@@ -533,7 +533,7 @@
                 <div class="timeline-item reveal reveal-delay-1">
                     <div class="timeline-node"></div>
                     <h3 class="timeline-title">The Ceremony</h3>
-                    <p class="timeline-text">Two o'clock in the afternoon<br>St. John Vianney Church<br>Lalaan II, Silang, Cavite</p>
+                    <p class="timeline-text">2:00 PM<br>St. John Vianney Church<br>Lalaan II, Silang, Cavite</p>
                 </div>
                 <div class="timeline-item reveal reveal-delay-2">
                     <div class="timeline-node"></div>
