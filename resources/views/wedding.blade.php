@@ -105,7 +105,6 @@
             background:radial-gradient(ellipse 90% 80% at 50% 50%,#fdfaf4 0%,#f4e8d6 100%);
         }
 
-        /* Concentric rings */
         .hero-arc {
             position:absolute; border-radius:50%;
             border:1px solid rgba(196,146,64,.15);
@@ -115,14 +114,12 @@
         .hero-arc-2 { width:540px; height:540px; top:50%; left:50%; transform:translate(-50%,-50%); }
         .hero-arc-3 { width:380px; height:380px; top:50%; left:50%; transform:translate(-50%,-50%); }
 
-        /* Watercolor polygon SVG */
         .hero-polygon { position:absolute; pointer-events:none; z-index:1; }
         .hero-polygon-left  { left:-6%; top:50%; transform:translateY(-54%) rotate(-5deg); width:clamp(240px,28vw,400px); opacity:.65; }
         .hero-polygon-right { right:-6%; top:50%; transform:translateY(-46%) rotate(7deg); width:clamp(240px,28vw,400px); opacity:.58; }
 
         .hero-content { position:relative; z-index:5; text-align:center; padding:3rem 2rem; }
 
-        /* Monogram ring */
         .monogram-ring {
             width:76px; height:76px; border-radius:50%;
             border:1px solid rgba(196,146,64,.38);
@@ -189,7 +186,6 @@
         .btn:hover { color:white; }
         .btn:hover::before { transform:scaleX(1); }
 
-        /* ── SECTION ORNATE FRAME ── */
         .section-frame {
             position:absolute; inset:2.5rem;
             border:1px solid rgba(196,146,64,.09);
@@ -319,9 +315,50 @@
         }
         .venue-img-wrap:hover::after { border-color:rgba(212,170,120,.3); }
 
+        /* ── DRESS CODE & GIFT DETAILS (NEW ADDITIONS) ── */
+        .dress-code-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 4rem;
+            text-align: left;
+        }
+        .dress-card {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 3.5rem 3rem;
+            border: 1px solid rgba(196, 146, 64, 0.12);
+            position: relative;
+        }
+        .dress-card h3 {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: white;
+            background: var(--gold-mid);
+            display: inline-block;
+            padding: 0.6rem 1.8rem;
+            margin-bottom: 2rem;
+        }
+        .dress-desc { font-size: 1.15rem; line-height: 1.8; color: var(--text); margin-bottom: 1rem; }
+        .color-palette { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .color-swatch {
+            width: 40px; height: 40px; border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.05); position: relative; margin-bottom: 1.2rem;
+        }
+        .color-swatch span {
+            position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
+            font-size: 0.58rem; font-family: 'Jost', sans-serif; text-transform: uppercase;
+            white-space: nowrap; color: var(--muted); letter-spacing: 0.1em;
+        }
+        .gift-note-box {
+            max-width: 760px; margin: 6rem auto 0; padding: 4rem 2rem;
+            border-top: 1px solid var(--gold-pale); border-bottom: 1px solid var(--gold-pale);
+        }
+
         /* ── COUNTDOWN ── */
         .countdown-band {
-            padding:6rem 0; text-align:center;
+            padding: 6rem 0; text-align:center;
             background:linear-gradient(135deg,#f9f5ef 0%,#f2e8d9 100%);
             position:relative; overflow:hidden;
         }
@@ -436,6 +473,7 @@
             .hero-arc-1,.hero-arc-2,.hero-arc-3 { display:none; }
             .countdown-grid { gap:1.5rem; }
             .hero-polygon { display:none; }
+            .dress-code-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -444,24 +482,16 @@
     <button class="music-btn" id="musicButton" title="Toggle Music">♫</button>
     <audio id="weddingMusic" src="{{ asset('wedding-assets/music/tahanan.mp3') }}" loop></audio>
 
-    <!-- ══════════ HERO ══════════ -->
     <section class="hero">
-
         <div class="hero-arc hero-arc-1"></div>
         <div class="hero-arc hero-arc-2"></div>
         <div class="hero-arc hero-arc-3"></div>
 
-        {{-- <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}"    class="floral floral-tl" aria-hidden="true">
-        <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-br" aria-hidden="true">
-        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}"    class="floral floral-tr" aria-hidden="true">
-        <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-bl" aria-hidden="true"> --}}
-
-        <!-- Left polygon -->
         <svg class="hero-polygon hero-polygon-left" viewBox="0 0 380 420" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <filter id="blurL"><feGaussianBlur stdDeviation="14"/></filter>
                 <radialGradient id="wL" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%"   stop-color="#e2b97a" stop-opacity=".5"/>
+                    <stop offset="0%" stop-color="#e2b97a" stop-opacity=".5"/>
                     <stop offset="100%" stop-color="#f0d5b0" stop-opacity="0"/>
                 </radialGradient>
             </defs>
@@ -470,12 +500,11 @@
             <polygon points="130,75 270,62 328,192 291,328 160,342 72,234 90,112" stroke="#c9a86e" stroke-width=".7" fill="none" opacity=".35"/>
         </svg>
 
-        <!-- Right polygon -->
         <svg class="hero-polygon hero-polygon-right" viewBox="0 0 380 420" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <filter id="blurR"><feGaussianBlur stdDeviation="14"/></filter>
                 <radialGradient id="wR" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%"   stop-color="#d9a86a" stop-opacity=".42"/>
+                    <stop offset="0%" stop-color="#d9a86a" stop-opacity=".42"/>
                     <stop offset="100%" stop-color="#edd8b8" stop-opacity="0"/>
                 </radialGradient>
             </defs>
@@ -485,44 +514,33 @@
         </svg>
 
         <div class="glitter-canvas" id="glitterCanvas" aria-hidden="true"></div>
-        <div class="petals-canvas"  id="petalsCanvas"  aria-hidden="true"></div>
+        <div class="petals-canvas" id="petalsCanvas" aria-hidden="true"></div>
 
         <div class="hero-content">
-
             <div class="monogram-ring reveal">
                 <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
-                    <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle"
-                          font-family="Great Vibes, cursive" font-size="18" fill="#a8722a">J&amp;S</text>
+                    <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" font-family="Great Vibes, cursive" font-size="18" fill="#a8722a">J&amp;S</text>
                 </svg>
             </div>
-
             <p class="save-date reveal">Save The Date</p>
             <h1 class="names reveal reveal-delay-1">Joel</h1>
             <div class="ampersand-wrap reveal reveal-delay-2"><span class="ampersand">&amp;</span></div>
             <h1 class="names reveal reveal-delay-2">Stephanie</h1>
-
-            <p class="hero-tagline reveal reveal-delay-3">
-                Together With Their Families<br>
-                Request The Pleasure of Your Company
-            </p>
-
+            <p class="hero-tagline reveal reveal-delay-3">Together With Their Families<br>Request The Pleasure of Your Company</p>
             <div class="date-badge reveal reveal-delay-3">
                 <div class="hero-date">
                     <p>Wednesday, October 7, 2026</p>
                     <p>Fruella's Tagaytay, Philippines</p>
                 </div>
             </div>
-
             <a href="#rsvp" class="btn reveal reveal-delay-4"><span>RSVP Now</span></a>
         </div>
     </section>
 
-    <!-- ══════════ TIMELINE ══════════ -->
     <section class="section bg-warm">
         <div class="section-frame"></div>
-        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}"    class="floral floral-tl" style="width:140px;opacity:.28;" aria-hidden="true">
+        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}" class="floral floral-tl" style="width:140px;opacity:.28;" aria-hidden="true">
         <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-br" style="width:140px;opacity:.28;" aria-hidden="true">
-
         <div class="container">
             <div class="center reveal">
                 <p class="eyebrow">The Celebration</p>
@@ -549,27 +567,22 @@
         </div>
     </section>
 
-    <!-- ══════════ LOVE QUOTE ══════════ -->
     <section class="quote-band">
-        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}"    class="floral floral-tl" style="width:150px;opacity:.35;" aria-hidden="true">
+        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}" class="floral floral-tl" style="width:150px;opacity:.35;" aria-hidden="true">
         <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-br" style="width:150px;opacity:.35;" aria-hidden="true">
-
         <svg style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(480px,80vw);opacity:.15;" viewBox="0 0 400 300" fill="none">
             <polygon points="200,18 370,108 340,268 78,278 28,128" stroke="#b8925a" stroke-width="1.5" fill="rgba(232,205,160,.22)"/>
-            <polygon points="200,32 354,113 326,256 92,266 43,130"  stroke="#c9a86e" stroke-width=".8" fill="none"/>
+            <polygon points="200,32 354,113 326,256 92,266 43,130" stroke="#c9a86e" stroke-width=".8" fill="none"/>
         </svg>
-
         <div class="container-sm" style="position:relative;z-index:2;">
             <p class="quote-text reveal">"Two souls, one heartbeat —<br>a love story written in the stars"</p>
             <p class="quote-attr reveal reveal-delay-1">Joel &amp; Stephanie · October 2026</p>
         </div>
     </section>
 
-    <!-- ══════════ GALLERY ══════════ -->
     <section class="section bg-paper">
-        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}"    class="floral floral-tr" style="width:155px;opacity:.25;" aria-hidden="true">
+        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}" class="floral floral-tr" style="width:155px;opacity:.25;" aria-hidden="true">
         <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-bl" style="width:155px;opacity:.25;" aria-hidden="true">
-
         <div class="container">
             <div class="center reveal">
                 <p class="eyebrow">A Glimpse of</p>
@@ -605,12 +618,10 @@
         </div>
     </section>
 
-    <!-- ══════════ CEREMONY ══════════ -->
     <section class="section bg-warm">
         <div class="section-frame"></div>
-        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}"    class="floral floral-tl" style="width:148px;opacity:.28;" aria-hidden="true">
+        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}" class="floral floral-tl" style="width:148px;opacity:.28;" aria-hidden="true">
         <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-br" style="width:148px;opacity:.28;" aria-hidden="true">
-
         <div class="container">
             <div class="venue reveal">
                 <p class="eyebrow">The Ceremony</p>
@@ -622,210 +633,169 @@
                         <img src="{{ asset('wedding-assets/images/church.png') }}" alt="Church exterior">
                         <div class="venue-overlay"><span>St. John Vianney Church</span></div>
                     </div>
-                    {{-- <div class="venue-img-wrap">
-                        <img src="{{ asset('wedding-assets/images/church1.jpg') }}" alt="Church interior">
-                        <div class="venue-overlay"><span>The Ceremony</span></div>
-                    </div> --}}
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ══════════ RECEPTION ══════════ -->
     <section class="section bg-paper">
-        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}"    class="floral floral-tr" style="width:150px;opacity:.25;" aria-hidden="true">
-        <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-bl" style="width:150px;opacity:.25;" aria-hidden="true">
-
         <div class="container">
-            <div class="venue reveal">
-                <p class="eyebrow">The Reception</p>
-                <h2 class="venue-title">Fruella's Tagaytay</h2>
-                <p class="venue-description">After the ceremony, we invite you to celebrate with us at the stunning Fruella's Tagaytay. Enjoy an evening of dining, dancing, and unforgettable memories surrounded by lush greenery and cool mountain air.</p>
-                <div class="venue-images">
-                    <div class="venue-img-wrap">
-                        <img src="{{ asset('wedding-assets/images/reception1.jpg') }}" alt="Reception venue">
-                        <div class="venue-overlay"><span>Fruella's Tagaytay</span></div>
+            <div class="center reveal">
+                <p class="eyebrow">Attire Guide</p>
+                <h2 class="title">Dress Code</h2>
+                <div class="divider"><span class="div-ornament">✦</span></div>
+                <p class="hero-tagline">To reflect our Filipino heritage, we request the following attire:</p>
+            </div>
+
+            <div class="dress-code-grid">
+                <div class="dress-card reveal">
+                    <h3>Guests</h3>
+                    <p class="dress-desc"><strong>Women:</strong> Filipina Attire (Long Gown, Cocktail Dress, or Pants with Bolero)</p>
+                    <p class="dress-desc" style="margin-top:1.5rem;"><strong>Men:</strong> Short Sleeve Barong Tagalog with Black pants and Khaki Brown</p>
+                    
+                    <p class="eyebrow" style="margin-top:2.5rem; font-size:0.6rem;">Suggested Palette</p>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background:#EBC6C6;"><span>Dusty Pink</span></div>
+                        <div class="color-swatch" style="background:#E3D1B5;"><span>Champagne</span></div>
+                        <div class="color-swatch" style="background:#D9C5B2;"><span>Beige</span></div>
+                        <div class="color-swatch" style="background:#B7A994;"><span>Khaki</span></div>
+                        <div class="color-swatch" style="background:#8B6F4E;"><span>Brown</span></div>
+                        <div class="color-swatch" style="background:#828D71;"><span>Sage</span></div>
                     </div>
-                    {{-- <div class="venue-img-wrap">
-                        <img src="{{ asset('wedding-assets/images/reception2.jpg') }}" alt="Reception setup">
-                        <div class="venue-overlay"><span>An Evening to Remember</span></div>
-                    </div>
-                    <div class="venue-img-wrap">
-                        <img src="{{ asset('wedding-assets/images/reception3.jpg') }}" alt="Reception decor">
-                        <div class="venue-overlay"><span>Celebrate With Us</span></div>
-                    </div> --}}
                 </div>
+
+                <div class="dress-card reveal reveal-delay-1">
+                    <h3>Ninong & Ninang</h3>
+                    <p class="dress-desc"><strong>Ninang:</strong> Champagne or Beige Gown of Filipina</p>
+                    <div class="color-palette" style="margin-bottom:2rem;">
+                        <div class="color-swatch" style="background:#E3D1B5;"><span>Champagne</span></div>
+                        <div class="color-swatch" style="background:#D9C5B2;"><span>Beige</span></div>
+                    </div>
+                    <p class="dress-desc"><strong>Ninong:</strong> Long Sleeve Barong Tagalog with Brown, Khaki, or Black Pants</p>
+                </div>
+            </div>
+
+            <div class="gift-note-box center reveal">
+                <p class="eyebrow">A Note on Gifts</p>
+                <p class="dress-desc" style="font-style: italic;">
+                    "Your presence at our wedding is already a blessing to us. With this, we kindly request no boxed or extravagant gifts. Should you wish to bless us further, a monetary gift would be sincerely appreciated."
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- ══════════ COUNTDOWN ══════════ -->
     <section class="countdown-band">
-        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}"    class="floral floral-tl" style="width:148px;opacity:.32;" aria-hidden="true">
-        <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-br" style="width:148px;opacity:.32;" aria-hidden="true">
-
-        <svg style="position:absolute;right:4%;bottom:4%;width:190px;opacity:.1;" viewBox="0 0 280 280" fill="none">
-            <polygon points="140,15 258,82 258,198 140,265 22,198 22,82" stroke="#b8925a" stroke-width="1.5" fill="rgba(232,205,160,.28)"/>
-        </svg>
-
-        <div class="container" style="position:relative;z-index:2;">
+        <div class="container">
             <div class="center reveal">
-                <p class="eyebrow">Counting Down to</p>
-                <h2 class="title">The Big Day</h2>
-                <div class="divider"><span class="div-ornament">✦</span></div>
+                <p class="eyebrow">The Countdown</p>
+                <h2 class="title">Counting the Days</h2>
             </div>
             <div class="countdown-grid reveal reveal-delay-1" id="countdown">
-                <div class="count-item"><div class="count-num" id="cnt-days">—</div><span class="count-label">Days</span></div>
+                <div class="count-item"><span class="count-num" id="days">00</span><span class="count-label">Days</span></div>
                 <div class="count-sep">·</div>
-                <div class="count-item"><div class="count-num" id="cnt-hours">—</div><span class="count-label">Hours</span></div>
+                <div class="count-item"><span class="count-num" id="hours">00</span><span class="count-label">Hours</span></div>
                 <div class="count-sep">·</div>
-                <div class="count-item"><div class="count-num" id="cnt-mins">—</div><span class="count-label">Minutes</span></div>
+                <div class="count-item"><span class="count-num" id="mins">00</span><span class="count-label">Mins</span></div>
                 <div class="count-sep">·</div>
-                <div class="count-item"><div class="count-num" id="cnt-secs">—</div><span class="count-label">Seconds</span></div>
+                <div class="count-item"><span class="count-num" id="secs">00</span><span class="count-label">Secs</span></div>
             </div>
         </div>
     </section>
 
-    <!-- ══════════ RSVP ══════════ -->
     <section class="section rsvp-wrap" id="rsvp">
-        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}"    class="floral floral-tl" style="width:175px;opacity:.28;" aria-hidden="true">
-        <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-br" style="width:175px;opacity:.28;" aria-hidden="true">
-        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}"    class="floral floral-tr" style="width:135px;opacity:.18;" aria-hidden="true">
-        <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-bl" style="width:135px;opacity:.18;" aria-hidden="true">
-
-        <svg style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(680px,90vw);opacity:.055;" viewBox="0 0 600 500" fill="none">
-            <polygon points="300,20 560,150 520,420 100,440 30,170" stroke="#b8925a" stroke-width="2" fill="rgba(232,205,160,.4)"/>
-        </svg>
-
-        <div class="container-sm">
+        <div class="container">
             <div class="center reveal">
-                <p class="eyebrow">We Hope You Can Make It</p>
-                <h2 class="title">Kindly Respond</h2>
+                <p class="eyebrow">Kindly Reply</p>
+                <h2 class="title">Will You Attend?</h2>
                 <div class="divider"><span class="div-ornament">✦</span></div>
             </div>
-
-            <div class="rsvp-box reveal">
-                <form method="POST" action="{{ route('wedding.rsvp.store') }}">
-                    @csrf
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" name="name" class="input" required placeholder="Your full name">
+            <div class="rsvp-box reveal reveal-delay-1">
+                <form id="rsvpForm">
+                    <div class="form-group"><label>Full Name</label><input type="text" class="input" placeholder="Your name as in invitation" required></div>
+                    <div class="form-group"><label>Attendance</label>
+                        <div class="attendance"><button type="button" class="choice active" data-value="yes">Accepts with Pleasure</button><button type="button" class="choice" data-value="no">Declines with Regret</button></div>
                     </div>
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" name="email" class="input" placeholder="your@email.com">
+                    <div class="conditional show" id="guestDetails">
+                        <div class="form-group"><label>Number of Guests</label><select class="input"><option>1 Guest</option><option>2 Guests</option></select></div>
+                        <div class="form-group"><label>Dietary Restrictions</label><textarea class="input" placeholder="Any allergies or special requirements?"></textarea></div>
                     </div>
-                    <div class="form-group">
-                        <label>Will You Attend?</label>
-                        <input type="hidden" id="attending" name="attending">
-                        <div class="attendance">
-                            <button type="button" class="choice" data-attending="yes">Joyfully Accept</button>
-                            <button type="button" class="choice" data-attending="no">Respectfully Decline</button>
-                        </div>
-                    </div>
-                    <div id="guestFields" class="conditional">
-                        <div class="form-group">
-                            <label>Number of Guests</label>
-                            <select name="guests" class="input">
-                                <option value="1">1 Guest</option>
-                                <option value="2">2 Guests</option>
-                                {{-- <option value="3">3 Guests</option>
-                                <option value="4">4 Guests</option> --}}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Message for the Couple</label>
-                        <textarea name="message" class="input" placeholder="Share your wishes..."></textarea>
-                    </div>
-                    <div class="center">
-                        <button type="submit" class="btn"><span>Send RSVP</span></button>
-                    </div>
+                    <button type="submit" class="btn" style="width:100%;margin-top:1rem;"><span>Submit RSVP</span></button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- ══════════ FOOTER ══════════ -->
     <footer>
-        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}"    class="floral floral-tl" style="width:140px;opacity:.25;" aria-hidden="true">
-        <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-br" style="width:140px;opacity:.25;" aria-hidden="true">
-
-        <svg style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(400px,70vw);opacity:.06;" viewBox="0 0 400 360" fill="none">
-            <polygon points="200,20 370,130 330,310 100,320 30,150" stroke="#b8925a" stroke-width="1.8" fill="rgba(232,205,160,.35)"/>
-        </svg>
-
-        <div style="position:relative;z-index:2;">
-            <h2 class="footer-names">Joel &amp; Stephanie</h2>
-            <div class="footer-ornament"><span class="footer-ornament-icon">✦</span></div>
-            <p class="footer-date">October 7, 2026 &nbsp;·&nbsp; Tagaytay, Philippines</p>
-            <p class="footer-note">With love, joy, and everlasting gratitude</p>
-        </div>
+        <div class="footer-names">Joel & Stephanie</div>
+        <div class="footer-ornament"><span class="footer-ornament-icon">✦</span></div>
+        <div class="footer-date">October 7, 2026 · Tagaytay</div>
+        <div class="footer-note">See you at our celebration!</div>
     </footer>
 
     <script>
-        /* ── GLITTER ── */
-        const gc = document.getElementById('glitterCanvas');
-        for (let i = 0; i < 55; i++) {
-            const d = document.createElement('div');
-            d.className = 'glitter-dot';
-            const sz = Math.random() * 3 + 1;
-            d.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;animation-duration:${Math.random()*3+2}s;animation-delay:${Math.random()*4}s;`;
-            gc.appendChild(d);
-        }
-
-        /* ── PETALS ── */
-        const pc = document.getElementById('petalsCanvas');
-        const petalColors = ['rgba(220,185,148,.4)','rgba(240,210,175,.35)','rgba(200,165,120,.3)','rgba(235,200,160,.38)'];
-        for (let i = 0; i < 18; i++) {
-            const p = document.createElement('div');
-            p.className = 'petal';
-            const w = Math.random()*10+5, h = w*(Math.random()*.6+.5);
-            p.style.cssText = `left:${Math.random()*100}%;bottom:-5%;width:${w}px;height:${h}px;background:${petalColors[Math.floor(Math.random()*4)]};animation-duration:${Math.random()*15+12}s;animation-delay:${Math.random()*12}s;`;
-            pc.appendChild(p);
-        }
-
-        /* ── REVEAL ── */
+        // Reveal Logic
         const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
-        }, { threshold:.1 });
+            entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        /* ── RSVP ── */
-        document.querySelectorAll('.choice').forEach(c => {
-            c.addEventListener('click', () => {
+        // Music Logic
+        const musicBtn = document.getElementById('musicButton');
+        const audio = document.getElementById('weddingMusic');
+        musicBtn.addEventListener('click', () => {
+            if(audio.paused) { audio.play(); musicBtn.classList.add('playing'); }
+            else { audio.pause(); musicBtn.classList.remove('playing'); }
+        });
+
+        // Countdown Logic
+        const targetDate = new Date("Oct 7, 2026 14:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const gap = targetDate - now;
+            const d = Math.floor(gap / (1000 * 60 * 60 * 24));
+            const h = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((gap % (1000 * 60)) / 1000);
+            document.getElementById('days').innerText = d < 10 ? '0'+d : d;
+            document.getElementById('hours').innerText = h < 10 ? '0'+h : h;
+            document.getElementById('mins').innerText = m < 10 ? '0'+m : m;
+            document.getElementById('secs').innerText = s < 10 ? '0'+s : s;
+        }, 1000);
+
+        // RSVP Logic
+        document.querySelectorAll('.choice').forEach(btn => {
+            btn.addEventListener('click', function() {
                 document.querySelectorAll('.choice').forEach(b => b.classList.remove('active'));
-                c.classList.add('active');
-                document.getElementById('attending').value = c.dataset.attending;
-                document.getElementById('guestFields').classList.toggle('show', c.dataset.attending === 'yes');
+                this.classList.add('active');
+                document.getElementById('guestDetails').classList.toggle('show', this.dataset.value === 'yes');
             });
         });
 
-        /* ── COUNTDOWN ── */
-        function updateCountdown() {
-            const diff = new Date('2026-10-07T14:00:00+08:00') - new Date();
-            if (diff <= 0) return;
-            document.getElementById('cnt-days').textContent  = Math.floor(diff / 86400000);
-            document.getElementById('cnt-hours').textContent = Math.floor((diff % 86400000) / 3600000);
-            document.getElementById('cnt-mins').textContent  = Math.floor((diff % 3600000) / 60000);
-            document.getElementById('cnt-secs').textContent  = Math.floor((diff % 60000) / 1000);
+        // Glitter
+        const canvas = document.getElementById('glitterCanvas');
+        for(let i=0; i<40; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'glitter-dot';
+            dot.style.left = Math.random()*100 + '%';
+            dot.style.top = Math.random()*100 + '%';
+            dot.style.width = dot.style.height = (Math.random()*3 + 1) + 'px';
+            dot.style.animationDelay = Math.random()*5 + 's';
+            canvas.appendChild(dot);
         }
-        updateCountdown(); setInterval(updateCountdown, 1000);
 
-        /* ── MUSIC AUTOPLAY ── */
-        const audio = document.getElementById('weddingMusic');
-        const btn   = document.getElementById('musicButton');
-        let playing = false;
-        audio.volume = .45;
-        function setPlaying(v) { playing=v; btn.textContent=v?'♬':'♫'; btn.classList.toggle('playing',v); }
-        function tryPlay() { audio.play().then(()=>setPlaying(true)).catch(()=>setPlaying(false)); }
-        window.addEventListener('load', tryPlay);
-        const fi = () => { if (!playing) tryPlay(); ['click','scroll','touchstart'].forEach(ev=>document.removeEventListener(ev,fi)); };
-        ['click','scroll','touchstart'].forEach(ev => document.addEventListener(ev, fi));
-        btn.addEventListener('click', e => {
-            e.stopPropagation();
-            playing ? (audio.pause(),setPlaying(false)) : audio.play().then(()=>setPlaying(true)).catch(()=>{});
-        });
+        // Petals
+        const petalsCanvas = document.getElementById('petalsCanvas');
+        for(let i=0; i<15; i++) {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.style.left = Math.random()*100 + '%';
+            petal.style.bottom = '-5%';
+            petal.style.width = petal.style.height = (Math.random()*15 + 10) + 'px';
+            petal.style.background = `rgba(168, 114, 42, ${Math.random()*0.2 + 0.1})`;
+            petal.style.animationDuration = (Math.random()*8 + 12) + 's';
+            petal.style.animationDelay = Math.random()*15 + 's';
+            petalsCanvas.appendChild(petal);
+        }
     </script>
 </body>
 </html>
