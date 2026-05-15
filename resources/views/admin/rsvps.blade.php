@@ -76,7 +76,7 @@
 
     <p><strong>Total Participants:</strong> {{ $totalParticipants }}</p>
 
-    <p><strong>Attending:</strong> {{ $attendingCount }}</p>
+    {{-- <p><strong>Attending:</strong> {{ $attendingCount }}</p> --}}
 
     <p><strong>Not Attending:</strong> {{ $notAttendingCount }}</p>
 </div>
@@ -86,8 +86,8 @@
         <tr>
             <th>Name</th>
             <th>Email</th>
-            <th>Attending</th>
-            <th>Guests</th>
+            {{-- <th>Attending</th> --}}
+            <th>Guests Invited</th>
             <th>Total Participants</th>
             <th>Dietary Needs</th>
             <th>Message</th>
@@ -102,11 +102,11 @@
 
                 <td>{{ $rsvp->email }}</td>
 
-                <td>
+                {{-- <td>
                     <span class="{{ $rsvp->attending == 'yes' ? 'yes' : 'no' }}">
                         {{ strtoupper($rsvp->attending) }}
                     </span>
-                </td>
+                </td> --}}
 
                 <td>{{ $rsvp->guests }}</td>
 
