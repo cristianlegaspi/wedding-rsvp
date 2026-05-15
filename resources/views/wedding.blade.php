@@ -717,7 +717,7 @@
                 <form id="rsvpForm">
                     <div class="form-group"><label>Full Name</label><input type="text" class="input" placeholder="Your name as in invitation" required></div>
                     <div class="form-group"><label>Attendance</label>
-                        <div class="attendance"><button type="button" class="choice active" data-value="yes">Accepts with Pleasure</button><button type="button" class="choice" data-value="no">Declines with Regret</button></div>
+                        <div class="attendance"><button type="button" class="choice active" data-value="yes">Accepts with Pleasure</button><button type="button" class="choice" data-value="no">Declined without Regret</button></div>
                     </div>
                     <div class="conditional show" id="guestDetails">
                         <div class="form-group"><label>Number of Guests</label><select class="input"><option>1 Guest</option><option>2 Guests</option></select></div>
