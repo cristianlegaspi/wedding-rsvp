@@ -814,7 +814,7 @@
                             <label>Number of Guests</label>
                             <select name="guests" class="input">
                                 <option value="1" {{ old('guests') == 1 ? 'selected' : '' }}>1 Guest</option>
-                                <option value="2" {{ old('guests') == 2 ? 'selected' : '' }}>2 Guests</option>
+                                {{-- <option value="2" {{ old('guests') == 2 ? 'selected' : '' }}>2 Guests</option> --}}
                             </select>
                         </div>
                         <div class="form-group">
