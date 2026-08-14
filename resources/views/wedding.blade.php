@@ -692,8 +692,7 @@
                         <div class="color-swatch" style="background:#D9C5B2;"><span>Beige</span></div>
                         <div class="color-swatch" style="background:#B7A994;"><span>Khaki</span></div>
                         <div class="color-swatch" style="background:#8B6F4E;"><span>Brown</span></div>
-                        <div class="color-swatch" style="background:#93C572;"><span>Pistachio</span></div>
-                          <div class="color-swatch" style="background:#B2AC88;"><span>Sage Green</span></div>
+                        <div class="color-swatch" style="background:#B2AC88;"><span>Sage Green</span></div>
                         
                     </div>
                 </div>
