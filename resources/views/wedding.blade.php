@@ -812,17 +812,17 @@
                 </div>
             </div>
 
-            {{-- Bible Bearer --}}
-            <div class="single-role reveal">
-                <p class="role-heading">Bible Bearer</p>
-                <p>Mark Lienz Calunod</p>
-            </div>
+                <div class="veil-block">
+                    <p class="veil-label">Bible Bearer</p>
+                    <p class="role-col-name">Mark Lienz Calunod</p>
+                </div>
 
-            {{-- Ring Keeper and Vows --}}
-            <div class="single-role reveal">
-                <p class="role-heading">Ring Keeper and Vows</p>
-                <p>Sophia Steffie Galupo Camiguing</p>
-            </div>
+                   <div class="veil-block">
+                    <p class="veil-label">Ring Keeper and Vows</p>
+                    <p class="role-col-name">Sophia Steffie Galupo Camiguing</p>
+                </div>
+
+          
 
             {{-- Flower Girls --}}
             <div class="role-block reveal">
@@ -929,7 +929,7 @@
                 <p class="eyebrow">The Party</p>
                 <h2 class="venue-title">Fruella's Tagaytay</h2>
                 <p class="venue-description">Join us for a night of dining, dancing, and celebration at our beautiful garden reception following the ceremony.</p>
-                <div><span class="venue-time">5:00 PM · October 7, 2026</span></div>
+                <div><span class="venue-time">4:00 PM · October 7, 2026</span></div>
                 <div class="venue-images">
                     <div class="venue-img-wrap">
                         <img src="{{ asset('wedding-assets/images/reception1.jpg') }}" alt="Venue exterior">
