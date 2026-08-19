@@ -356,6 +356,92 @@
             border-top: 1px solid var(--gold-pale); border-bottom: 1px solid var(--gold-pale);
         }
 
+        /* ── GOOGLE MAP ── */
+        .map-wrap {
+            margin-top:2.2rem; overflow:hidden; position:relative;
+            background:#ede6da; border:1px solid rgba(196,146,64,.18);
+        }
+        .map-wrap::after {
+            content:''; position:absolute; inset:8px; z-index:2;
+            border:1px solid rgba(212,170,120,.28); pointer-events:none;
+        }
+        .map-frame { width:100%; height:380px; border:0; display:block; filter:saturate(.82) sepia(.06); }
+        .direction-btn {
+            display:inline-flex; align-items:center; gap:.6rem;
+            margin-top:1.8rem;
+            border:1px solid var(--gold); color:var(--gold);
+            padding:.85rem 2.4rem;
+            font-family:'Jost',sans-serif; font-size:.62rem;
+            letter-spacing:.3em; text-transform:uppercase;
+            transition:all .35s ease; background:transparent; cursor:pointer;
+        }
+        .direction-btn:hover { background:var(--gold); color:white; }
+
+        /* ── ENTOURAGE ── */
+        .entourage-wrap { background:var(--warm-white); }
+        .entourage-date {
+            font-family:'Jost',sans-serif; font-size:.7rem;
+            letter-spacing:.5em; text-transform:uppercase; color:var(--muted);
+            margin-bottom:3rem;
+        }
+        .entourage-date span { color:var(--gold); }
+        .entourage-names {
+            font-family:'Great Vibes',cursive;
+            font-size:clamp(2.6rem,6vw,4.2rem); color:var(--gold);
+            margin-top:.6rem; line-height:1.1;
+        }
+        .entourage-sub {
+            font-family:'Jost',sans-serif; font-size:.8rem;
+            letter-spacing:.7em; text-transform:uppercase; color:var(--gold-mid);
+            margin-top:1.1rem;
+        }
+        .role-block { margin-top:5rem; }
+        .role-block:first-of-type { margin-top:4.5rem; }
+        .role-heading {
+            font-family:'Jost',sans-serif; font-size:.65rem;
+            letter-spacing:.42em; text-transform:uppercase; color:var(--gold-mid);
+            text-align:center; margin-bottom:2.6rem;
+        }
+        .role-heading::before,.role-heading::after {
+            content:''; display:inline-block; width:34px; height:1px;
+            background:var(--gold-pale); vertical-align:middle; margin:0 1.1rem;
+        }
+        .role-columns { display:grid; grid-template-columns:1fr 1fr; gap:2rem; text-align:center; }
+        .role-col-label {
+            font-family:'Jost',sans-serif; font-size:.6rem;
+            letter-spacing:.3em; text-transform:uppercase; color:var(--muted);
+            margin-bottom:.9rem;
+        }
+        .role-col-name { font-size:1.35rem; color:var(--text); font-style:italic; line-height:1.8; }
+
+        .sponsor-pairs { margin-top:2.4rem; max-width:760px; margin-left:auto; margin-right:auto; }
+        .sponsor-row {
+            display:grid; grid-template-columns:1fr 1fr; gap:2rem;
+            text-align:center; padding:.6rem 0; font-size:1.12rem; color:var(--text);
+            border-bottom:1px solid rgba(196,146,64,.08);
+        }
+        .sponsor-row:last-child { border-bottom:none; }
+        .sponsor-solo { text-align:center; padding:.6rem 0; font-size:1.12rem; color:var(--text); }
+
+        .special-list { margin-top:2.2rem; text-align:center; }
+        .special-list p { font-size:1.15rem; color:var(--text); padding:.4rem 0; font-style:italic; }
+
+        .veil-block { margin-top:2.6rem; text-align:center; }
+        .veil-label {
+            font-family:'Jost',sans-serif; font-size:.6rem;
+            letter-spacing:.3em; text-transform:uppercase; color:var(--muted);
+            margin-bottom:.9rem;
+        }
+        .veil-block p.role-col-name { padding:.15rem 0; }
+
+        .party-list p { font-size:1.1rem; color:var(--text); padding:.5rem 0; }
+
+        .single-role { margin-top:4.5rem; text-align:center; }
+        .single-role .role-heading { margin-bottom:1.6rem; }
+        .single-role p { font-size:1.3rem; color:var(--gold); font-style:italic; }
+
+        .flower-list p { font-size:1.1rem; color:var(--text); padding:.4rem 0; }
+
         /* ── COUNTDOWN ── */
         .countdown-band {
             padding:6rem 0; text-align:center;
@@ -474,6 +560,10 @@
             .countdown-grid { gap:1.5rem; }
             .hero-polygon { display:none; }
             .dress-code-grid { grid-template-columns: 1fr; }
+            .map-frame { height:280px; }
+            .role-columns { grid-template-columns:1fr; gap:2.6rem; }
+            .sponsor-row { grid-template-columns:1fr; gap:.3rem; text-align:center; }
+            .sponsor-row div:first-child { padding-bottom:.2rem; }
         }
     </style>
 </head>
@@ -535,7 +625,7 @@
             <div class="date-badge reveal reveal-delay-3">
                 <div class="hero-date">
                     <p>Wednesday, October 7, 2026</p>
-                    <p>Fruella's Tagaytay, Philippines</p>
+                    <p>Fruella's Event Place - Tagaytay, Philippines</p>
                 </div>
             </div>
 
@@ -558,12 +648,12 @@
                 <div class="timeline-item reveal reveal-delay-1">
                     <div class="timeline-node"></div>
                     <h3 class="timeline-title">The Ceremony</h3>
-                    <p class="timeline-text">2:00 PM<br>St. John Vianney Church<br>Lalaan II, Silang, Cavite</p>
+                    <p class="timeline-text">2:00 PM<br>St John Marie Vianney Parish Church<br>Emilio Aguinaldo Highway in Lalaan II, Silang, Cavite.</p>
                 </div>
                 <div class="timeline-item reveal reveal-delay-2">
                     <div class="timeline-node"></div>
                     <h3 class="timeline-title">The Reception</h3>
-                    <p class="timeline-text">Following the ceremony<br>Fruella's Tagaytay<br>Lalaan II, Silang, Cavite</p>
+                    <p class="timeline-text">4:00 PM<br>Following the ceremony<br>Fruella's Event Place - Tagaytay<br>144 Daang Luma, Brgy. Salaban, Amadeo, Cavite</p>
                 </div>
                 <div class="timeline-item reveal reveal-delay-3">
                     <div class="timeline-node"></div>
@@ -571,6 +661,179 @@
                     <p class="timeline-text">Wednesday<br>October 7, 2026</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    {{-- ═══════════════════════════════════════════════════ --}}
+    {{-- THE ENTOURAGE                                        --}}
+    {{-- ═══════════════════════════════════════════════════ --}}
+    <section class="section entourage-wrap bg-paper">
+        <div class="section-frame"></div>
+        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}" class="floral floral-tl" style="width:150px;opacity:.25;" aria-hidden="true">
+        <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-br" style="width:150px;opacity:.25;" aria-hidden="true">
+
+        <div class="container-sm">
+
+            <div class="center reveal">
+                <p class="entourage-date">Date <span>Wednesday, October 7, 2026</span></p>
+                <p class="eyebrow">The Entourage</p>
+                <h2 class="entourage-names">Camiguing &amp; Galupo</h2>
+                <p class="entourage-sub">Nuptials</p>
+                <div class="divider"><span class="div-ornament">✦</span></div>
+            </div>
+
+            {{-- Groom & Bride --}}
+            <div class="role-block reveal">
+                <div class="role-columns">
+                    <div>
+                        <p class="role-col-label">Groom</p>
+                        <p class="role-col-name">Joel S. Camiguing Jr.</p>
+                    </div>
+                    <div>
+                        <p class="role-col-label">Bride</p>
+                        <p class="role-col-name">Estephanie M. Galupo</p>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Parents --}}
+            <div class="role-block reveal">
+                <div class="role-columns">
+                    <div>
+                        <p class="role-col-label">Groom Parents</p>
+                        <p class="role-col-name">Mr. Joel Camiguing Sr.<br>Mrs. Evelyn Camiguing</p>
+                    </div>
+                    <div>
+                        <p class="role-col-label">Bride Parents</p>
+                        <p class="role-col-name">Mr. Rafael Galupo<br>Mrs. Elizabeth Galupo</p>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Principal Sponsors --}}
+            <div class="role-block reveal">
+                <p class="role-heading">Principal Sponsors</p>
+                <div class="sponsor-pairs">
+                    <div class="sponsor-row"><div>Mr. Eduardo Ocampo</div><div>Mrs. Hazel Ocampo</div></div>
+                    <div class="sponsor-row"><div>Mr. Ronnel Camiguing</div><div>Mrs. Caren Camiguing</div></div>
+                    <div class="sponsor-row"><div>Mr. Marco Batingan</div><div>Mrs. Mildes Batingan</div></div>
+                    <div class="sponsor-row"><div>Mr. Edwin Pagkaliwangan</div><div>Mrs. Gerly Pagkaliwangan</div></div>
+                    <div class="sponsor-row"><div>Mr. Russel Ramos</div><div>Mrs. Mary Ann Ramos</div></div>
+                    <div class="sponsor-row"><div>Mr. Edgar Mongas</div><div>Mrs. Imelda Mongas</div></div>
+                    <div class="sponsor-row"><div>Mr. Lodivico Mondeja Jr.</div><div>Mrs. Flory Mondeja</div></div>
+                    <div class="sponsor-solo">Mr. Owen Siervo</div>
+                    <div class="sponsor-solo">Mr. Roynald S. Soriano</div>
+                </div>
+            </div>
+
+            {{-- Special Sponsors --}}
+            <div class="role-block reveal">
+                <p class="role-heading">Special Sponsors</p>
+                <div class="special-list">
+                    <p>Jayson Lu</p>
+                    <p>Phoebe Barashari</p>
+                    <p>Apol Mongas</p>
+                    <p>Romel Suaverdez</p>
+                </div>
+            </div>
+
+            {{-- Best Man / Maid of Honor --}}
+            <div class="role-block reveal">
+                <div class="role-columns">
+                    <div>
+                        <p class="role-col-label">Best Man</p>
+                        <p class="role-col-name">Mr. Jan Franko Mogol</p>
+                    </div>
+                    <div>
+                        <p class="role-col-label">Maid of Honor</p>
+                        <p class="role-col-name">Ms. Geraldine Galupo</p>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Secondary Sponsors --}}
+            <div class="role-block reveal">
+                <p class="role-heading">Secondary Sponsors</p>
+                <div class="role-columns">
+                    <div>
+                        <p class="role-col-label">Candle</p>
+                        <p class="role-col-name">Luis Suaverdez<br>Nelly Suaverdez</p>
+                    </div>
+                    <div>
+                        <p class="role-col-label">Cord</p>
+                        <p class="role-col-name">Rafael Galupo Jr.<br>Apol Mongas</p>
+                    </div>
+                </div>
+                <div class="veil-block">
+                    <p class="veil-label">Veil</p>
+                    <p class="role-col-name">Kristian Lorenz Vitug<br>Jonalyn Vitug</p>
+                </div>
+            </div>
+
+            {{-- Groomsmen / Bridesmaids --}}
+            <div class="role-block reveal">
+                <div class="role-columns">
+                    <div>
+                        <p class="role-col-label">Groomsmen</p>
+                        <div class="party-list">
+                            <p>Cristian Legaspi</p>
+                            <p>Jay Carlo Camiguing</p>
+                            <p>John Lester Camiguing</p>
+                            <p>Rafael Galupo III</p>
+                            <p>Jayson Galupo</p>
+                            <p>Adrian Camiguing</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="role-col-label">Bridesmaids</p>
+                        <div class="party-list">
+                            <p>Joylyn Camiguing</p>
+                            <p>Marinel Portera</p>
+                            <p>Brenda Lobos</p>
+                            <p>Aimalyn Mongas</p>
+                            <p>Karalyn Dela Pena</p>
+                            <p>Judy Ann Galupo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Ring Bearer / Coin Bearer --}}
+            <div class="role-block reveal">
+                <div class="role-columns">
+                    <div>
+                        <p class="role-col-label">Ring Bearer</p>
+                        <p class="role-col-name">John Caleb C. Vitug</p>
+                    </div>
+                    <div>
+                        <p class="role-col-label">Coin Bearer</p>
+                        <p class="role-col-name">Zillian Galupo</p>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Bible Bearer --}}
+            <div class="single-role reveal">
+                <p class="role-heading">Bible Bearer</p>
+                <p>Mark Lienz Calunod</p>
+            </div>
+
+            {{-- Ring Keeper and Vows --}}
+            <div class="single-role reveal">
+                <p class="role-heading">Ring Keeper and Vows</p>
+                <p>Sophia Steffie Galupo Camiguing</p>
+            </div>
+
+            {{-- Flower Girls --}}
+            <div class="role-block reveal">
+                <p class="role-heading">Flower Girls</p>
+                <div class="flower-list center">
+                    <p>Rhian Muico</p>
+                    <p>Darlene Pearl Mongas</p>
+                    <p>Beverly Camiguing Bueta</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -645,6 +908,13 @@
                         <div class="venue-overlay"><span>St. John Vianney Church</span></div>
                     </div>
                 </div>
+                <div class="map-wrap">
+                    <iframe class="map-frame"
+                        src="https://www.google.com/maps?q=St.+John+Vianney+Church,+Lalaan+II,+Silang,+Cavite&output=embed"
+                        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        title="St. John Vianney Church Map"></iframe>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=St.+John+Vianney+Church,+Lalaan+II,+Silang,+Cavite" target="_blank" rel="noopener" class="direction-btn">Get Directions</a>
             </div>
         </div>
     </section>
@@ -666,6 +936,13 @@
                         <div class="venue-overlay"><span>Fruella's Tagaytay</span></div>
                     </div>
                 </div>
+                <div class="map-wrap">
+                    <iframe class="map-frame"
+                        src="https://www.google.com/maps?q=Fruella's+Tagaytay,+Lalaan+II,+Silang,+Cavite&output=embed"
+                        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        title="Fruella's Tagaytay Map"></iframe>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=Fruella's+Tagaytay,+Lalaan+II,+Silang,+Cavite" target="_blank" rel="noopener" class="direction-btn">Get Directions</a>
             </div>
         </div>
     </section>
