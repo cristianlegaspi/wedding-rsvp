@@ -438,9 +438,47 @@
 
         .single-role { margin-top:4.5rem; text-align:center; }
         .single-role .role-heading { margin-bottom:1.6rem; }
-        .single-role p { font-size:1.3rem; color:var(--gold); font-style:italic; }
+        .single-role p { font-size:1.15rem; color:var(--text); font-style:italic; }
 
         .flower-list p { font-size:1.1rem; color:var(--text); padding:.4rem 0; }
+
+        /* ── GIFT / QR ── */
+        .gift-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:2.5rem;
+            margin-top:4rem;
+        }
+        .gift-card {
+            background:rgba(255,255,255,.55);
+            border:1px solid rgba(196,146,64,.18);
+            padding:3rem 2.5rem 2.8rem; text-align:center; position:relative;
+        }
+        .gift-card::before {
+            content:''; position:absolute; inset:8px;
+            border:1px solid rgba(212,170,120,.22); pointer-events:none;
+        }
+        .gift-bank {
+            font-family:'Jost',sans-serif; font-size:.68rem;
+            letter-spacing:.45em; text-transform:uppercase; color:var(--gold-mid);
+            margin-bottom:1.4rem;
+        }
+        .gift-name {
+            font-size:1.7rem; color:var(--gold); font-style:italic;
+            font-weight:400; margin-bottom:1.2rem;
+        }
+        .gift-details p {
+            font-family:'Jost',sans-serif; font-size:.72rem;
+            letter-spacing:.12em; color:var(--text); margin-bottom:.5rem;
+        }
+        .gift-details p span {
+            display:block; font-family:'Cormorant Garamond',serif;
+            font-size:1.15rem; letter-spacing:.06em; color:var(--muted);
+            margin-top:.2rem; font-style:italic;
+        }
+        .gift-qr-wrap {
+            width:180px; margin:2rem auto 0; overflow:hidden;
+            border:1px solid rgba(196,146,64,.2); background:#fff;
+        }
+        .gift-qr-wrap img { display:block; width:100%; }
 
         /* ── COUNTDOWN ── */
         .countdown-band {
@@ -560,6 +598,7 @@
             .countdown-grid { gap:1.5rem; }
             .hero-polygon { display:none; }
             .dress-code-grid { grid-template-columns: 1fr; }
+            .gift-grid { grid-template-columns:1fr; }
             .map-frame { height:280px; }
             .role-columns { grid-template-columns:1fr; gap:2.6rem; }
             .sponsor-row { grid-template-columns:1fr; gap:.3rem; text-align:center; }
@@ -812,15 +851,17 @@
                 </div>
             </div>
 
-                <div class="veil-block">
+          
+
+            <div class="veil-block">
                     <p class="veil-label">Bible Bearer</p>
                     <p class="role-col-name">Mark Lienz Calunod</p>
-                </div>
+            </div>
 
-                   <div class="veil-block">
+            <div class="veil-block">
                     <p class="veil-label">Ring Keeper and Vows</p>
                     <p class="role-col-name">Sophia Steffie Galupo Camiguing</p>
-                </div>
+            </div>
 
           
 
@@ -929,7 +970,7 @@
                 <p class="eyebrow">The Party</p>
                 <h2 class="venue-title">Fruella's Tagaytay</h2>
                 <p class="venue-description">Join us for a night of dining, dancing, and celebration at our beautiful garden reception following the ceremony.</p>
-                <div><span class="venue-time">4:00 PM · October 7, 2026</span></div>
+                <div><span class="venue-time">5:00 PM · October 7, 2026</span></div>
                 <div class="venue-images">
                     <div class="venue-img-wrap">
                         <img src="{{ asset('wedding-assets/images/reception1.jpg') }}" alt="Venue exterior">
@@ -1000,6 +1041,49 @@
                 <p class="dress-desc" style="font-style: italic;">
                     "Your presence at our wedding is already a blessing to us. With this, we kindly request no boxed or extravagant gifts. Should you wish to bless us further, a monetary gift would be sincerely appreciated."
                 </p>
+            </div>
+        </div>
+    </section>
+
+    {{-- ═══════════════════════════════════════════════════ --}}
+    {{-- GIFT / MONETARY BLESSING QR CODES                    --}}
+    {{-- ═══════════════════════════════════════════════════ --}}
+    <section class="section bg-paper">
+        <img src="{{ asset('wedding-assets/images/floral-top-left.png') }}" class="floral floral-tr" style="width:150px;opacity:.25;" aria-hidden="true">
+        <img src="{{ asset('wedding-assets/images/floral-bottom-right.png') }}" class="floral floral-bl" style="width:150px;opacity:.25;" aria-hidden="true">
+
+        <div class="container">
+            <div class="center reveal">
+                <p class="eyebrow">With Love</p>
+                <h2 class="title">Send a Gift</h2>
+                <div class="divider"><span class="div-ornament">✦</span></div>
+                <p class="hero-tagline">Scan to send your blessing our way</p>
+            </div>
+
+            <div class="gift-grid">
+                <div class="gift-card reveal reveal-delay-1">
+                    <p class="gift-bank">PNB</p>
+                    <p class="gift-name">Joel Camiguing</p>
+                    <div class="gift-details">
+                        <p>Account Name<span>Joel Camiguing</span></p>
+                        <p>Account Number<span>245310088559</span></p>
+                    </div>
+                    <div class="gift-qr-wrap">
+                        <img src="{{ asset('wedding-assets/images/qr-pnb.jpg') }}" alt="PNB InstaPay QR Code for Joel Camiguing">
+                    </div>
+                </div>
+
+                <div class="gift-card reveal reveal-delay-2">
+                    <p class="gift-bank">BPI</p>
+                    <p class="gift-name">Estephanie Galupo</p>
+                    <div class="gift-details">
+                        <p>Account Name<span>Estephanie Galupo</span></p>
+                        <p>Account Number<span>8519683246</span></p>
+                    </div>
+                    <div class="gift-qr-wrap">
+                        <img src="{{ asset('wedding-assets/images/qr-bpi.jpg') }}" alt="BPI InstaPay QR Code for Estephanie Galupo">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
