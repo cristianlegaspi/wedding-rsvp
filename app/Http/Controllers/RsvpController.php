@@ -20,12 +20,21 @@ class RsvpController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['nullable', 'email', 'max:255'],
             'attending' => ['required', 'in:yes,no'],
-            'guests' => ['nullable', 'integer', 'min:1', 'max:4'],
+            'guests' => [
+                'required_if:attending,yes',
+                'nullable',
+                'integer',
+                'min:0',
+                'max:4',
+            ],
             'dietary_needs' => ['nullable', 'string', 'max:500'],
             'message' => ['nullable', 'string', 'max:1000'],
         ]);
 
-        if (($validated['attending'] ?? null) === 'no') {
+        if ($validated['attending'] === 'yes') {
+            // 0 means Only Me.
+            $validated['guests'] = (int) ($validated['guests'] ?? 0);
+        } else {
             $validated['guests'] = null;
             $validated['dietary_needs'] = null;
         }
@@ -37,7 +46,6 @@ class RsvpController extends Controller
             'attending' => $validated['attending'],
         ]);
     }
-
     public function responses(): View
     {
         $rsvps = Rsvp::latest()->get();
@@ -56,21 +64,30 @@ class RsvpController extends Controller
     {
         $rsvp = Rsvp::findOrFail($id);
 
-        $validated = $request->validate([
+       $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['nullable', 'email', 'max:255'],
             'attending' => ['required', 'in:yes,no'],
-            'guests' => ['nullable', 'integer', 'min:1', 'max:4'],
+            'guests' => [
+                'required_if:attending,yes',
+                'nullable',
+                'integer',
+                'min:0',
+                'max:4',
+            ],
             'dietary_needs' => ['nullable', 'string', 'max:500'],
             'message' => ['nullable', 'string', 'max:1000'],
         ]);
 
-        if (($validated['attending'] ?? null) === 'no') {
+         if ($validated['attending'] === 'yes') {
+            // 0 means Only Me.
+            $validated['guests'] = (int) ($validated['guests'] ?? 0);
+        } else {
             $validated['guests'] = null;
             $validated['dietary_needs'] = null;
         }
 
-        $rsvp->update($validated);
+        Rsvp::create($validated);
 
         return redirect()
             ->route('admin.rsvps')

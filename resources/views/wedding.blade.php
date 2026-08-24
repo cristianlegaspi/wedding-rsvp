@@ -1172,11 +1172,21 @@
                     <div class="conditional {{ old('attending', 'yes') !== 'no' ? 'show' : '' }}" id="guestDetails">
                         <div class="form-group">
                             <label>Additional Guests</label>
-                            <select name="guests" class="input">
-                                <option value="1" {{ old('guests') == 1 ? 'selected' : '' }}>No additional guests (Only Me)</option>
-                                <option value="2" {{ old('guests') == 2 ? 'selected' : '' }}>1 Guest</option>
-                                {{-- <option value="2" {{ old('guests') == 2 ? 'selected' : '' }}>2 Guests</option> --}}
-                            </select>
+                            <select name="guests" class="input" required>
+                                    <option
+                                        value="0"
+                                        {{ (int) old('guests', 0) === 0 ? 'selected' : '' }}
+                                    >
+                                        No additional guests (Only Me)
+                                    </option>
+
+                                    <option
+                                        value="1"
+                                        {{ (int) old('guests', 0) === 1 ? 'selected' : '' }}
+                                    >
+                                        1 Additional Guest
+                                    </option>
+                                </select>
                         </div>
                         <div class="form-group">
                             <label>Dietary Restrictions</label>

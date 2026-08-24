@@ -17,4 +17,8 @@ class Rsvp extends Model
         'dietary_needs',
         'message',
     ];
+
+     protected $casts = [
+        'guests' => 'integer',
+    ];
 }
