@@ -672,6 +672,36 @@
             .memories-top .album-grid, .memories-top .memory-featured-grid { grid-template-columns:1fr; gap:1rem; }
             .memories-albums-heading { margin-top:3.4rem; }
         }
+
+        /* Gallery and linked memories — actual wedding photography */
+        .wedding-photo-gallery {
+            display:grid;
+            grid-template-columns:repeat(4,minmax(0,1fr));
+            gap:12px;
+            margin-top:3rem;
+        }
+        .wedding-photo-gallery .gallery-img-wrap { height:290px; }
+        .wedding-photo-gallery .gallery-img-wrap img {
+            width:100%; height:100%; object-fit:cover; object-position:center;
+        }
+        .memory-card-photo {
+            width:calc(100% + 2.4rem);
+            height:180px;
+            object-fit:cover;
+            display:block;
+            margin:-2.5rem -1.2rem .55rem;
+            max-width:none;
+            border-bottom:1px solid rgba(196,146,64,.18);
+        }
+        .memories-top .album-card { overflow:hidden; }
+        @media(max-width:900px) {
+            .wedding-photo-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); }
+        }
+        @media(max-width:600px) {
+            .wedding-photo-gallery { grid-template-columns:1fr; gap:12px; }
+            .wedding-photo-gallery .gallery-img-wrap { height:340px; }
+            .memory-card-photo { height:205px; margin-top:-2rem; }
+        }
     </style>
 </head>
 <body>
@@ -692,13 +722,13 @@
             </div>
             <div class="album-grid memory-featured-grid">
                 <a class="album-card reveal" href="https://drive.google.com/file/d/1FeHC6SBtGKclstp9aHov6ALoVWoz9zML/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Watch our SDE wedding video on Google Drive (opens in a new tab)">
-                    <span class="album-ornament" aria-hidden="true">✦</span>
+                    <img class="memory-card-photo" src="{{ asset("wedding-assets/images/ENHANCED - 190.JPG") }}" alt="" loading="lazy">
                     <h3>Same-Day Edit Video</h3>
                     <p>Relive every unforgettable moment of our wedding film.</p>
                     <span class="album-cta">Watch Video ↗</span>
                 </a>
                 <a class="album-card reveal reveal-delay-1" href="https://drive.google.com/file/d/1Q80ygVYvAEAT8bcYLzW-Kh1b0W9kUzBO/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="View our SDE photo on Google Drive (opens in a new tab)">
-                    <span class="album-ornament" aria-hidden="true">✦</span>
+                    <img class="memory-card-photo" src="{{ asset("wedding-assets/images/ENHANCED - 68.JPG") }}" alt="" loading="lazy">
                     <h3>Same-Day Edit Photo</h3>
                     <p>A special memory captured on our wedding day.</p>
                     <span class="album-cta">View Photo ↗</span>
@@ -710,19 +740,19 @@
             </div>
             <div class="album-grid">
                 <a class="album-card reveal" href="https://drive.google.com/drive/folders/1b82ltuGe9_UqLIhONngmNM3Kr0SNf8YL?usp=sharing" target="_blank" rel="noopener noreferrer">
-                    <span class="album-ornament" aria-hidden="true">✦</span>
+                    <img class="memory-card-photo" src="{{ asset("wedding-assets/images/ENHANCED - 203.JPG") }}" alt="" loading="lazy">
                     <h3>Pre-Nuptial Photos</h3>
                     <p>Our story before we said “I do.”</p>
                     <span class="album-cta">View Album ↗</span>
                 </a>
                 <a class="album-card reveal reveal-delay-1" href="https://drive.google.com/drive/folders/1WjrOvfr5S4Fp0t1vQc8JZzFSuUkXGHno?usp=sharing" target="_blank" rel="noopener noreferrer">
-                    <span class="album-ornament" aria-hidden="true">✦</span>
+                    <img class="memory-card-photo" src="{{ asset("wedding-assets/images/ENHANCED - 158.JPG") }}" alt="" loading="lazy">
                     <h3>Ceremony Photos</h3>
                     <p>The vows and moments that made us one.</p>
                     <span class="album-cta">View Album ↗</span>
                 </a>
                 <a class="album-card reveal reveal-delay-2" href="https://drive.google.com/drive/folders/1nhmk88wU7Tf3VsIMz6e7bUlxXPUIjNFZ?usp=sharing" target="_blank" rel="noopener noreferrer">
-                    <span class="album-ornament" aria-hidden="true">✦</span>
+                    <img class="memory-card-photo" src="{{ asset("wedding-assets/images/ENHANCED - 181.JPG") }}" alt="" loading="lazy">
                     <h3>Post-Nuptial Photos</h3>
                     <p>Celebrating the beginning of forever.</p>
                     <span class="album-cta">View Album ↗</span>
@@ -1023,31 +1053,47 @@
                 <h2 class="title">Our Celebration</h2>
                 <div class="divider"><span class="div-ornament">✦</span></div>
             </div>
-            <div class="gallery">
-                <div class="gallery-col">
+            <div class="wedding-photo-gallery">
                     <div class="gallery-img-wrap reveal">
-                        <img src="{{ asset('wedding-assets/images/gallery1.jpg') }}" alt="Gallery 1">
+                        <img src="{{ asset('wedding-assets/images/ENHANCED - 68.JPG') }}" alt="The Bride — Joel and Stephanie's wedding" loading="lazy">
                         <div class="corner-tl"></div><div class="corner-br"></div>
-                        <div class="img-caption">A moment of joy</div>
+                        <div class="img-caption">The Bride</div>
                     </div>
-                    <div class="gallery-img-wrap reveal reveal-delay-2">
-                        <img src="{{ asset('wedding-assets/images/gallery2.jpg') }}" alt="Gallery 2">
+                    <div class="gallery-img-wrap reveal">
+                        <img src="{{ asset('wedding-assets/images/ENHANCED - 18.JPG') }}" alt="Getting Ready — Joel and Stephanie's wedding" loading="lazy">
                         <div class="corner-tl"></div><div class="corner-br"></div>
-                        <div class="img-caption">Together forever</div>
+                        <div class="img-caption">Getting Ready</div>
                     </div>
-                </div>
-                <div class="gallery-col">
-                    <div class="gallery-img-wrap reveal reveal-delay-1">
-                        <img src="{{ asset('wedding-assets/images/gallery3.jpg') }}" alt="Gallery 3">
+                    <div class="gallery-img-wrap reveal">
+                        <img src="{{ asset('wedding-assets/images/ENHANCED - 203.JPG') }}" alt="A Walk Together — Joel and Stephanie's wedding" loading="lazy">
                         <div class="corner-tl"></div><div class="corner-br"></div>
-                        <div class="img-caption">Our love story</div>
+                        <div class="img-caption">A Walk Together</div>
                     </div>
-                    <div class="gallery-img-wrap reveal reveal-delay-3">
-                        <img src="{{ asset('wedding-assets/images/gallery4.jpg') }}" alt="Gallery 4">
+                    <div class="gallery-img-wrap reveal">
+                        <img src="{{ asset('wedding-assets/images/ENHANCED - 158.JPG') }}" alt="The Ceremony — Joel and Stephanie's wedding" loading="lazy">
                         <div class="corner-tl"></div><div class="corner-br"></div>
-                        <div class="img-caption">Into forever</div>
+                        <div class="img-caption">The Ceremony</div>
                     </div>
-                </div>
+                    <div class="gallery-img-wrap reveal">
+                        <img src="{{ asset('wedding-assets/images/ENHANCED - 181.JPG') }}" alt="Our Reception — Joel and Stephanie's wedding" loading="lazy">
+                        <div class="corner-tl"></div><div class="corner-br"></div>
+                        <div class="img-caption">Our Reception</div>
+                    </div>
+                    <div class="gallery-img-wrap reveal">
+                        <img src="{{ asset('wedding-assets/images/ENHANCED - 193.JPG') }}" alt="Together Forever — Joel and Stephanie's wedding" loading="lazy">
+                        <div class="corner-tl"></div><div class="corner-br"></div>
+                        <div class="img-caption">Together Forever</div>
+                    </div>
+                    <div class="gallery-img-wrap reveal">
+                        <img src="{{ asset('wedding-assets/images/ENHANCED - 190.JPG') }}" alt="Our Wedding Day — Joel and Stephanie's wedding" loading="lazy">
+                        <div class="corner-tl"></div><div class="corner-br"></div>
+                        <div class="img-caption">Our Wedding Day</div>
+                    </div>
+                    <div class="gallery-img-wrap reveal">
+                        <img src="{{ asset('wedding-assets/images/ENHANCED - 477.JPG') }}" alt="Bridal Portrait — Joel and Stephanie's wedding" loading="lazy">
+                        <div class="corner-tl"></div><div class="corner-br"></div>
+                        <div class="img-caption">Bridal Portrait</div>
+                    </div>
             </div>
         </div>
     </section>
