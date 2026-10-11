@@ -654,6 +654,24 @@
             .album-grid { grid-template-columns:1fr; gap:.85rem; }
             .album-card { min-height:195px; padding:2rem 1rem; }
         }
+
+        /* Memories: prominent top-of-page linked cards; no embedded video/photo players. */
+        .memories-top { padding:5rem 0 6rem; text-align:center; background:linear-gradient(180deg,#fdf9f3 0%,#f4e8d6 100%); }
+        .memories-top .sde-heading { margin-bottom:.25rem; }
+        .memories-top .sde-description { margin-bottom:3rem; }
+        .memories-top .album-grid { text-align:center; }
+        .memory-featured-grid { grid-template-columns:repeat(2,minmax(0,1fr)); max-width:800px; }
+        .memories-albums-heading { margin-top:5rem; }
+        .memories-top .album-card { color:inherit; text-decoration:none; }
+        .memories-top .album-card:focus-visible { outline:3px solid var(--gold); outline-offset:4px; }
+        @media(max-width:768px) {
+            .memories-top { padding:3rem 0 4rem; }
+            .memories-top .container { width:min(92%,1150px); }
+            .memories-top .sde-heading { font-size:clamp(3rem,11vw,4.7rem); }
+            .memories-top .sde-description { padding:0 8px; font-size:1rem; margin-bottom:2.2rem; }
+            .memories-top .album-grid, .memories-top .memory-featured-grid { grid-template-columns:1fr; gap:1rem; }
+            .memories-albums-heading { margin-top:3.4rem; }
+        }
     </style>
 </head>
 <body>
@@ -662,23 +680,54 @@
     <audio id="weddingMusic" src="{{ asset('wedding-assets/music/tahanan.mp3') }}" loop></audio>
 
 
-    {{-- Featured Same-Day Edit video hosted on Google Drive (no local MP4 required) --}}
-    <section class="sde-premiere" id="wedding-film">
+    {{-- Post-wedding memories: direct Google Drive links, no embedded players or sign-in prompts on this page. --}}
+    <section class="memories-top" id="wedding-memories">
         <div class="container">
             <p class="eyebrow">October 7, 2026 · Our Happily Ever After</p>
-            <h2 class="sde-heading">Joel &amp; Stephanie</h2>
-            <p class="sde-description">The day we said “I do,” captured in moments we will treasure forever. Relive our wedding through our Same-Day Edit film.</p>
-            <div class="sde-frame">
-                <iframe
-                    src="https://drive.google.com/file/d/1FeHC6SBtGKclstp9aHov6ALoVWoz9zML/preview"
-                    title="Joel and Stephanie Wedding Same-Day Edit"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allow="autoplay; fullscreen"
-                    allowfullscreen>
-                </iframe>
+            <h1 class="sde-heading">Joel &amp; Stephanie</h1>
+            <p class="sde-description">The day we said “I do,” captured in moments we will treasure forever. Explore our wedding film and photos.</p>
+            <div class="center">
+                <p class="eyebrow">Relive Our Special Day</p>
+                <h2 class="title">Wedding Film &amp; SDE Photo</h2>
             </div>
-            <p class="sde-caption">Our Wedding Film · Same-Day Edit</p>
-            <a class="sde-watch-link" href="https://drive.google.com/file/d/1FeHC6SBtGKclstp9aHov6ALoVWoz9zML/view?usp=sharing" target="_blank" rel="noopener noreferrer">Open video in Google Drive if playback is unavailable</a>
+            <div class="album-grid memory-featured-grid">
+                <a class="album-card reveal" href="https://drive.google.com/file/d/1FeHC6SBtGKclstp9aHov6ALoVWoz9zML/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Watch our SDE wedding video on Google Drive (opens in a new tab)">
+                    <span class="album-ornament" aria-hidden="true">✦</span>
+                    <h3>Same-Day Edit Video</h3>
+                    <p>Relive every unforgettable moment of our wedding film.</p>
+                    <span class="album-cta">Watch Video ↗</span>
+                </a>
+                <a class="album-card reveal reveal-delay-1" href="https://drive.google.com/file/d/1Q80ygVYvAEAT8bcYLzW-Kh1b0W9kUzBO/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="View our SDE photo on Google Drive (opens in a new tab)">
+                    <span class="album-ornament" aria-hidden="true">✦</span>
+                    <h3>Same-Day Edit Photo</h3>
+                    <p>A special memory captured on our wedding day.</p>
+                    <span class="album-cta">View Photo ↗</span>
+                </a>
+            </div>
+            <div class="center memories-albums-heading">
+                <p class="eyebrow">Explore Our Memories</p>
+                <h2 class="title">Photo Albums</h2>
+            </div>
+            <div class="album-grid">
+                <a class="album-card reveal" href="https://drive.google.com/drive/folders/1b82ltuGe9_UqLIhONngmNM3Kr0SNf8YL?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    <span class="album-ornament" aria-hidden="true">✦</span>
+                    <h3>Pre-Nuptial Photos</h3>
+                    <p>Our story before we said “I do.”</p>
+                    <span class="album-cta">View Album ↗</span>
+                </a>
+                <a class="album-card reveal reveal-delay-1" href="https://drive.google.com/drive/folders/1WjrOvfr5S4Fp0t1vQc8JZzFSuUkXGHno?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    <span class="album-ornament" aria-hidden="true">✦</span>
+                    <h3>Ceremony Photos</h3>
+                    <p>The vows and moments that made us one.</p>
+                    <span class="album-cta">View Album ↗</span>
+                </a>
+                <a class="album-card reveal reveal-delay-2" href="https://drive.google.com/drive/folders/1nhmk88wU7Tf3VsIMz6e7bUlxXPUIjNFZ?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    <span class="album-ornament" aria-hidden="true">✦</span>
+                    <h3>Post-Nuptial Photos</h3>
+                    <p>Celebrating the beginning of forever.</p>
+                    <span class="album-cta">View Album ↗</span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -739,7 +788,7 @@
                 </div>
             </div>
 
-            <a href="#wedding-film" class="btn reveal reveal-delay-4"><span>Watch Our Wedding Film</span></a>
+            <a href="#wedding-memories" class="btn reveal reveal-delay-4"><span>Explore Our Memories</span></a>
         </div>
     </section>
 
@@ -999,56 +1048,6 @@
                         <div class="img-caption">Into forever</div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- Post-wedding Google Drive photo galleries. Files and folders must be shared as Viewer. --}}
-    <section class="section photo-collection" id="wedding-photos">
-        <div class="container">
-            <div class="center reveal">
-                <p class="eyebrow">A Lifetime of Memories</p>
-                <h2 class="title">Our Wedding Photos</h2>
-                <div class="divider"><span class="div-ornament">✦</span></div>
-                <p class="photo-intro">From the moments before our wedding to our ceremony and the celebration afterward, revisit the memories we will always treasure.</p>
-            </div>
-
-            <div class="sde-photo-card reveal">
-                <h3>Same-Day Edit Photo</h3>
-                <iframe class="sde-photo-preview"
-                    src="https://drive.google.com/file/d/1Q80ygVYvAEAT8bcYLzW-Kh1b0W9kUzBO/preview"
-                    title="Joel and Stephanie Same-Day Edit photo preview"
-                    loading="lazy"
-                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                <p class="photo-collection-note">A special moment from our wedding day.</p>
-                <a class="photo-open"
-                    href="https://drive.google.com/file/d/1Q80ygVYvAEAT8bcYLzW-Kh1b0W9kUzBO/view?usp=sharing"
-                    target="_blank" rel="noopener noreferrer">View SDE Photo in Google Drive ↗</a>
-            </div>
-
-            <div class="center reveal">
-                <p class="eyebrow">Explore Our Memories</p>
-                <h2 class="title">Photo Albums</h2>
-            </div>
-            <div class="album-grid">
-                <a class="album-card reveal" href="https://drive.google.com/drive/folders/1b82ltuGe9_UqLIhONngmNM3Kr0SNf8YL?usp=sharing" target="_blank" rel="noopener noreferrer">
-                    <span class="album-ornament" aria-hidden="true">✦</span>
-                    <h3>Pre-Nuptial Photos</h3>
-                    <p>Our story before we said “I do.”</p>
-                    <span class="album-cta">View Album ↗</span>
-                </a>
-                <a class="album-card reveal reveal-delay-1" href="https://drive.google.com/drive/folders/1WjrOvfr5S4Fp0t1vQc8JZzFSuUkXGHno?usp=sharing" target="_blank" rel="noopener noreferrer">
-                    <span class="album-ornament" aria-hidden="true">✦</span>
-                    <h3>Ceremony Photos</h3>
-                    <p>The vows and moments that made us one.</p>
-                    <span class="album-cta">View Album ↗</span>
-                </a>
-                <a class="album-card reveal reveal-delay-2" href="https://drive.google.com/drive/folders/1nhmk88wU7Tf3VsIMz6e7bUlxXPUIjNFZ?usp=sharing" target="_blank" rel="noopener noreferrer">
-                    <span class="album-ornament" aria-hidden="true">✦</span>
-                    <h3>Post-Nuptial Photos</h3>
-                    <p>Celebrating the beginning of forever.</p>
-                    <span class="album-cta">View Album ↗</span>
-                </a>
             </div>
         </div>
     </section>
