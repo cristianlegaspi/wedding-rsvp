@@ -616,6 +616,44 @@
         .sde-watch-link { display:inline-block; margin-top:1.1rem; color:var(--gold); font-family:'Jost',sans-serif; font-size:.72rem; letter-spacing:.15em; text-decoration:underline; text-underline-offset:4px; }
         .sde-caption { margin-top:1.4rem; color:var(--gold); font-family:'Jost',sans-serif; font-size:.68rem; letter-spacing:.27em; text-transform:uppercase; }
         @media(max-width:768px){ .sde-premiere { padding:3.7rem 0 4rem; } .sde-frame {padding:5px;} }
+
+        /* Mobile SDE layout: edge-to-edge, without cropping the original film. */
+        .sde-frame { box-sizing:border-box; width:100%; }
+        .sde-frame iframe { display:block; width:100%; aspect-ratio:16 / 9; height:auto; }
+        @media (max-width:768px) {
+            .sde-premiere { padding:2.5rem 0 3rem; }
+            .sde-premiere .container { width:100%; max-width:none; }
+            .sde-premiere .eyebrow { padding:0 18px; font-size:.56rem; letter-spacing:.32em; line-height:1.8; }
+            .sde-heading { padding:0 12px; font-size:clamp(3rem,11vw,4.7rem); line-height:1.07; }
+            .sde-description { padding:0 22px; max-width:570px; font-size:1rem; line-height:1.65; margin:1.3rem auto 1.7rem; }
+            .sde-frame { padding:4px; border-left:0; border-right:0; box-shadow:0 8px 24px rgba(74,59,46,.10); }
+            .sde-frame iframe { width:100%; height:auto; min-height:0; aspect-ratio:16 / 9; }
+            .sde-caption { padding:0 12px; margin-top:1.1rem; font-size:.59rem; letter-spacing:.17em; }
+            .sde-watch-link { display:inline-block; margin:1rem 16px 0; font-size:.72rem; letter-spacing:.04em; line-height:1.7; }
+        }
+
+        /* Wedding photo collection: responsive, accessible Google Drive album links */
+        .photo-collection { background:linear-gradient(180deg,#fdf9f3 0%,#f7efe4 100%); }
+        .photo-intro { margin:1.5rem auto 0; max-width:680px; color:var(--muted); font-size:1.18rem; line-height:1.9; }
+        .sde-photo-card { width:min(780px,100%); margin:3rem auto 4.5rem; padding:1.1rem; border:1px solid var(--gold-pale); background:rgba(255,255,255,.55); text-align:center; box-shadow:0 14px 35px rgba(74,59,46,.07); }
+        .sde-photo-card h3 { font-size:2rem; font-weight:400; font-style:italic; color:var(--gold); margin:0 0 1rem; }
+        .sde-photo-preview { width:100%; aspect-ratio:4/3; border:0; display:block; background:#f4e8d6; }
+        .photo-collection-note { color:var(--muted); font-size:1rem; line-height:1.65; margin:1rem auto; }
+        .album-grid { margin:2.5rem auto 0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.2rem; }
+        .album-card { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:1rem; min-height:270px; padding:2.5rem 1.2rem; border:1px solid rgba(196,146,64,.32); background:rgba(255,255,255,.54); text-align:center; transition:transform .25s ease,box-shadow .25s ease; }
+        .album-card:hover,.album-card:focus-visible { transform:translateY(-4px); box-shadow:0 15px 35px rgba(74,59,46,.10); }
+        .album-ornament { font-size:2rem; color:var(--gold-light); }
+        .album-card h3 { font-size:clamp(1.7rem,2.5vw,2.3rem); color:var(--gold); font-weight:400; font-style:italic; }
+        .album-card p { color:var(--muted); font-size:1.05rem; line-height:1.65; }
+        .album-cta,.photo-open { font-family:'Jost',sans-serif; font-size:.67rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); border-bottom:1px solid currentColor; padding-bottom:.3rem; }
+        .photo-open { display:inline-block; margin:0.7rem 0 1rem; }
+        @media(max-width:768px) {
+            .photo-collection { padding:4rem 0; }
+            .sde-photo-card { padding:.5rem; margin:2.2rem auto 3rem; }
+            .sde-photo-preview { aspect-ratio:3/4; }
+            .album-grid { grid-template-columns:1fr; gap:.85rem; }
+            .album-card { min-height:195px; padding:2rem 1rem; }
+        }
     </style>
 </head>
 <body>
@@ -640,7 +678,7 @@
                 </iframe>
             </div>
             <p class="sde-caption">Our Wedding Film · Same-Day Edit</p>
-            {{-- <a class="sde-watch-link" href="https://drive.google.com/file/d/1FeHC6SBtGKclstp9aHov6ALoVWoz9zML/view?usp=sharing" target="_blank" rel="noopener noreferrer">Open video in Google Drive if playback is unavailable</a> --}}
+            <a class="sde-watch-link" href="https://drive.google.com/file/d/1FeHC6SBtGKclstp9aHov6ALoVWoz9zML/view?usp=sharing" target="_blank" rel="noopener noreferrer">Open video in Google Drive if playback is unavailable</a>
         </div>
     </section>
 
@@ -961,6 +999,56 @@
                         <div class="img-caption">Into forever</div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- Post-wedding Google Drive photo galleries. Files and folders must be shared as Viewer. --}}
+    <section class="section photo-collection" id="wedding-photos">
+        <div class="container">
+            <div class="center reveal">
+                <p class="eyebrow">A Lifetime of Memories</p>
+                <h2 class="title">Our Wedding Photos</h2>
+                <div class="divider"><span class="div-ornament">✦</span></div>
+                <p class="photo-intro">From the moments before our wedding to our ceremony and the celebration afterward, revisit the memories we will always treasure.</p>
+            </div>
+
+            <div class="sde-photo-card reveal">
+                <h3>Same-Day Edit Photo</h3>
+                <iframe class="sde-photo-preview"
+                    src="https://drive.google.com/file/d/1Q80ygVYvAEAT8bcYLzW-Kh1b0W9kUzBO/preview"
+                    title="Joel and Stephanie Same-Day Edit photo preview"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <p class="photo-collection-note">A special moment from our wedding day.</p>
+                <a class="photo-open"
+                    href="https://drive.google.com/file/d/1Q80ygVYvAEAT8bcYLzW-Kh1b0W9kUzBO/view?usp=sharing"
+                    target="_blank" rel="noopener noreferrer">View SDE Photo in Google Drive ↗</a>
+            </div>
+
+            <div class="center reveal">
+                <p class="eyebrow">Explore Our Memories</p>
+                <h2 class="title">Photo Albums</h2>
+            </div>
+            <div class="album-grid">
+                <a class="album-card reveal" href="https://drive.google.com/drive/folders/1b82ltuGe9_UqLIhONngmNM3Kr0SNf8YL?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    <span class="album-ornament" aria-hidden="true">✦</span>
+                    <h3>Pre-Nuptial Photos</h3>
+                    <p>Our story before we said “I do.”</p>
+                    <span class="album-cta">View Album ↗</span>
+                </a>
+                <a class="album-card reveal reveal-delay-1" href="https://drive.google.com/drive/folders/1WjrOvfr5S4Fp0t1vQc8JZzFSuUkXGHno?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    <span class="album-ornament" aria-hidden="true">✦</span>
+                    <h3>Ceremony Photos</h3>
+                    <p>The vows and moments that made us one.</p>
+                    <span class="album-cta">View Album ↗</span>
+                </a>
+                <a class="album-card reveal reveal-delay-2" href="https://drive.google.com/drive/folders/1nhmk88wU7Tf3VsIMz6e7bUlxXPUIjNFZ?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    <span class="album-ornament" aria-hidden="true">✦</span>
+                    <h3>Post-Nuptial Photos</h3>
+                    <p>Celebrating the beginning of forever.</p>
+                    <span class="album-cta">View Album ↗</span>
+                </a>
             </div>
         </div>
     </section>
