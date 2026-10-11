@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Joel & Stephanie Wedding RSVP</title>
+    <meta name="referrer" content="strict-origin-when-cross-origin"/>
+    <title>Joel & Stephanie | Our Wedding Film</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -604,12 +605,44 @@
             .sponsor-row { grid-template-columns:1fr; gap:.3rem; text-align:center; }
             .sponsor-row div:first-child { padding-bottom:.2rem; }
         }
+
+        /* Post-wedding SDE film premiere */
+        .sde-premiere { padding:5.5rem 0 6rem; background:linear-gradient(180deg,#fdf9f3,#f4e8d6); text-align:center; position:relative; }
+        .sde-premiere .container { position:relative; z-index:3; }
+        .sde-heading { font-family:'Great Vibes',cursive; font-size:clamp(3.5rem,8vw,6.5rem); font-weight:400; color:var(--gold); line-height:1.2; }
+        .sde-description { max-width:660px; margin:1.25rem auto 2rem; color:var(--muted); font-size:1.18rem; line-height:1.8; }
+        .sde-frame { max-width:980px; margin:0 auto; padding:10px; border:1px solid var(--gold-pale); background:rgba(255,255,255,.55); box-shadow:0 20px 55px rgba(74,59,46,.12); }
+        .sde-frame iframe { display:block; width:100%; aspect-ratio:16/9; border:0; background:#1d1713; }
+        .sde-watch-link { display:inline-block; margin-top:1.1rem; color:var(--gold); font-family:'Jost',sans-serif; font-size:.72rem; letter-spacing:.15em; text-decoration:underline; text-underline-offset:4px; }
+        .sde-caption { margin-top:1.4rem; color:var(--gold); font-family:'Jost',sans-serif; font-size:.68rem; letter-spacing:.27em; text-transform:uppercase; }
+        @media(max-width:768px){ .sde-premiere { padding:3.7rem 0 4rem; } .sde-frame {padding:5px;} }
     </style>
 </head>
 <body>
 
     <button class="music-btn" id="musicButton" title="Toggle Music">♫</button>
     <audio id="weddingMusic" src="{{ asset('wedding-assets/music/tahanan.mp3') }}" loop></audio>
+
+
+    {{-- Featured Same-Day Edit video hosted on Google Drive (no local MP4 required) --}}
+    <section class="sde-premiere" id="wedding-film">
+        <div class="container">
+            <p class="eyebrow">October 7, 2026 · Our Happily Ever After</p>
+            <h2 class="sde-heading">Joel &amp; Stephanie</h2>
+            <p class="sde-description">The day we said “I do,” captured in moments we will treasure forever. Relive our wedding through our Same-Day Edit film.</p>
+            <div class="sde-frame">
+                <iframe
+                    src="https://drive.google.com/file/d/1FeHC6SBtGKclstp9aHov6ALoVWoz9zML/preview"
+                    title="Joel and Stephanie Wedding Same-Day Edit"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="autoplay; fullscreen"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="sde-caption">Our Wedding Film · Same-Day Edit</p>
+            {{-- <a class="sde-watch-link" href="https://drive.google.com/file/d/1FeHC6SBtGKclstp9aHov6ALoVWoz9zML/view?usp=sharing" target="_blank" rel="noopener noreferrer">Open video in Google Drive if playback is unavailable</a> --}}
+        </div>
+    </section>
 
     <section class="hero">
 
@@ -654,12 +687,12 @@
                 </svg>
             </div>
 
-            <p class="save-date reveal">Save The Date</p>
+            <p class="save-date reveal">A Celebration of Love</p>
             <h1 class="names reveal reveal-delay-1">Joel</h1>
             <div class="ampersand-wrap reveal reveal-delay-2"><span class="ampersand">&amp;</span></div>
             <h1 class="names reveal reveal-delay-2">Stephanie</h1>
 
-            <p class="hero-tagline reveal reveal-delay-3">Together With Their Families<br>Request The Pleasure of Your Company</p>
+            <p class="hero-tagline reveal reveal-delay-3">Together With Their Families<br>Thank You for Celebrating Our Love</p>
 
             <div class="date-badge reveal reveal-delay-3">
                 <div class="hero-date">
@@ -668,7 +701,7 @@
                 </div>
             </div>
 
-            <a href="#rsvp" class="btn reveal reveal-delay-4"><span>RSVP Now</span></a>
+            <a href="#wedding-film" class="btn reveal reveal-delay-4"><span>Watch Our Wedding Film</span></a>
         </div>
     </section>
 
@@ -1091,8 +1124,8 @@
     <section class="countdown-band">
         <div class="container">
             <div class="center reveal">
-                <p class="eyebrow">The Countdown</p>
-                <h2 class="title">Counting the Days</h2>
+                <p class="eyebrow">Our Forever Has Begun</p>
+                <h2 class="title">The Wait Is Over</h2>
             </div>
             <div class="countdown-grid reveal reveal-delay-1" id="countdown">
                 <div class="count-item"><span class="count-num" id="days">00</span><span class="count-label">Days</span></div>
@@ -1106,103 +1139,18 @@
         </div>
     </section>
 
-    {{-- ═══════════════════════════════════════════════════ --}}
-    {{-- RSVP SECTION — only this form block was changed    --}}
-    {{-- ═══════════════════════════════════════════════════ --}}
-    <section class="section rsvp-wrap" id="rsvp">
+    {{-- RSVP is closed. This is a post-event thank-you section, with no form. --}}
+    <section class="section rsvp-wrap" id="thank-you">
         <div class="container">
             <div class="center reveal">
-                <p class="eyebrow">Kindly Reply</p>
-                <h2 class="title">Will You Attend?</h2>
+                <p class="eyebrow">With Grateful Hearts</p>
+                <h2 class="title">Thank You for Celebrating With Us</h2>
                 <div class="divider"><span class="div-ornament">✦</span></div>
             </div>
-            <div class="rsvp-box reveal reveal-delay-1">
-
-                {{-- Success message --}}
-                @if(session('rsvp_submitted'))
-                    <div style="text-align:center; padding:2rem; margin-bottom:2rem; border:1px solid var(--gold-pale); background:rgba(168,114,42,.05);">
-                        @if(session('attending') === 'yes')
-                            <p style="font-family:'Great Vibes',cursive; font-size:2rem; color:var(--gold);">We'll see you there!</p>
-                            <p style="font-family:'Jost',sans-serif; font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; color:var(--muted); margin-top:.8rem;">Your RSVP has been received. Thank you!</p>
-                        @else
-                            <p style="font-family:'Great Vibes',cursive; font-size:2rem; color:var(--gold);">We'll miss you!</p>
-                            <p style="font-family:'Jost',sans-serif; font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; color:var(--muted); margin-top:.8rem;">Thank you for letting us know.</p>
-                        @endif
-                    </div>
-                @endif
-
-                {{-- Validation errors --}}
-                @if($errors->any())
-                    <div style="margin-bottom:1.5rem; padding:1rem; border:1px solid #c0392b; color:#c0392b; font-family:'Jost',sans-serif; font-size:.75rem; letter-spacing:.1em;">
-                        <ul style="list-style:none; padding:0;">
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
-                <form id="rsvpForm" action="{{ route('wedding.rsvp.store') }}" method="POST">
-                    @csrf
-
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" name="name" class="input"
-                               placeholder="Your name as in invitation"
-                               value="{{ old('name') }}" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" name="email" class="input"
-                               placeholder="Your email address"
-                               value="{{ old('email') }}" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Attendance</label>
-                        {{-- Hidden input carries the real value for the controller --}}
-                        <input type="hidden" name="attending" id="attendingInput" value="{{ old('attending', 'yes') }}">
-                        <div class="attendance">
-                            <button type="button" class="choice {{ old('attending', 'yes') !== 'no' ? 'active' : '' }}" data-value="yes">Accepts with Pleasure</button>
-                            <button type="button" class="choice {{ old('attending') === 'no' ? 'active' : '' }}" data-value="no">Declines with Regret</button>
-                        </div>
-                    </div>
-
-                    <div class="conditional {{ old('attending', 'yes') !== 'no' ? 'show' : '' }}" id="guestDetails">
-                        <div class="form-group">
-                            <label>Additional Guests</label>
-                            <select name="guests" class="input" required>
-                                    <option
-                                        value="0"
-                                        {{ (int) old('guests', 0) === 0 ? 'selected' : '' }}
-                                    >
-                                        No additional guests (Only Me)
-                                    </option>
-
-                                    <option
-                                        value="1"
-                                        {{ (int) old('guests', 0) === 1 ? 'selected' : '' }}
-                                    >
-                                        1 Additional Guest
-                                    </option>
-                                </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Dietary Restrictions</label>
-                            <textarea name="dietary_needs" class="input" placeholder="Any allergies or special requirements?">{{ old('dietary_needs') }}</textarea>
-                        </div>
-                    </div>
-
-
-                     <div class="form-group">
-                        <label>Message</label>
-                        <textarea name="message" class="input" placeholder="Your message">{{ old('message') }}</textarea>
-                    </div>
-
-                    <button type="submit" class="btn" style="width:100%;margin-top:1rem;"><span>Submit RSVP</span></button>
-                </form>
-
+            <div class="rsvp-box center reveal reveal-delay-1">
+                <p style="font-family:'Great Vibes',cursive;font-size:clamp(2rem,5vw,3.3rem);color:var(--gold);">Our hearts are full.</p>
+                <p style="margin-top:1.4rem;font-size:1.25rem;color:var(--muted);line-height:1.9;">Thank you to our family and friends for being part of our special day. Your love, prayers, and presence made our wedding unforgettable.</p>
+                <p style="margin-top:2rem;font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);">RSVP is now closed · October 7, 2026</p>
             </div>
         </div>
     </section>
@@ -1211,7 +1159,7 @@
         <div class="footer-names">Joel & Stephanie</div>
         <div class="footer-ornament"><span class="footer-ornament-icon">✦</span></div>
         <div class="footer-date">October 7, 2026 · Tagaytay</div>
-        <div class="footer-note">See you at our celebration!</div>
+        <div class="footer-note">Thank you for celebrating our love!</div>
     </footer>
 
     <script>
@@ -1229,30 +1177,9 @@
             else { audio.pause(); musicBtn.classList.remove('playing'); }
         });
 
-        // Countdown Logic
-        const targetDate = new Date("Oct 7, 2026 14:00:00").getTime();
-        setInterval(() => {
-            const now = new Date().getTime();
-            const gap = targetDate - now;
-            const d = Math.floor(gap / (1000 * 60 * 60 * 24));
-            const h = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((gap % (1000 * 60)) / 1000);
-            document.getElementById('days').innerText = d < 10 ? '0'+d : d;
-            document.getElementById('hours').innerText = h < 10 ? '0'+h : h;
-            document.getElementById('mins').innerText = m < 10 ? '0'+m : m;
-            document.getElementById('secs').innerText = s < 10 ? '0'+s : s;
-        }, 1000);
-
-        // RSVP Logic — syncs hidden input + toggles guest details
-        document.querySelectorAll('.choice').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.choice').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                const val = this.dataset.value;
-                document.getElementById('attendingInput').value = val;
-                document.getElementById('guestDetails').classList.toggle('show', val === 'yes');
-            });
+        // The wedding has concluded: freeze the countdown at zero.
+        ['days', 'hours', 'mins', 'secs'].forEach(id => {
+            document.getElementById(id).textContent = '00';
         });
 
         // Glitter
